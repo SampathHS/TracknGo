@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "852769935953",
+    "project_id": "track-n-go-362fb",
+    "storage_bucket": "track-n-go-362fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852769935953:android:1110315d345651fb859e70",
+        "android_client_info": {
+          "package_name": "com.example.track_n_go"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852769935953-itbhgge7in2h4054ss0gd1r0s9t2e0qp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY3j3HTYf_ghr6gnKS1trx1baYdeeimCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852769935953-itbhgge7in2h4054ss0gd1r0s9t2e0qp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

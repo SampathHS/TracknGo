@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:track_n_go/model/slide.dart';
+import 'package:track_n_go/widgets/model/slide.dart';
 
 
 
@@ -17,7 +17,7 @@ class SlideItem extends StatelessWidget {
           width: 200,
           height: 200,
           decoration: BoxDecoration(
-            shape: BoxShape.circle,
+            shape: BoxShape.rectangle,
             image: DecorationImage(image: AssetImage(slideList[index].imageUrl)),
             //fit: BoxFit.cover,
 
