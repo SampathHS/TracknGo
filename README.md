@@ -1,6 +1,6 @@
 # track_n_go
 
-A new Flutter application.
+The Online Bus Ticket Reservation System, application that allows visitors check bus ticket avilability, buy bus ticket and pay the bus ticket online. 
 
 ## Getting Started
 
