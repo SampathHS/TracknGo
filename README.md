@@ -1,6 +1,6 @@
 # track_n_go
 
-The Online Bus Ticket Reservation System, application that allows visitors check bus ticket avilability, buy bus ticket and pay the bus ticket online. 
+The Online Bus Ticket Reservation System, application that allows visitors check bus ticket availability, buy bus ticket and pay the bus ticket online. 
 
 ## Getting Started
 
