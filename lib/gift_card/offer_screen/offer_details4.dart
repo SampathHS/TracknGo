@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:track_n_go/home/searchscreen.dart';
+import 'package:track_n_go/home/bottom_bar.dart';
 
 class offer4 extends StatefulWidget {
   static const routeName = '/offer4';
@@ -86,7 +86,7 @@ class _offer4State extends State<offer4> {
                       color: Colors.purple[900],
                       textColor: Colors.yellowAccent,
                       onPressed: () {
-                        Navigator.of(context).pushNamed(SearchScreen.routeName);
+                        Navigator.of(context).pushNamed(bottomBar.routeName);
                       },
                     )
                   ],

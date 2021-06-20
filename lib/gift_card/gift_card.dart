@@ -66,7 +66,7 @@ class _giftState extends State<gift> {
                             onPressed: (){
                               Navigator.of(context).pushNamed(offer4.routeName);
                             },
-                          )
+                          ),
                         ],
                       ),
                   ),

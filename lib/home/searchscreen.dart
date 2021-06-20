@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:track_n_go/app_list/profile.dart';
 import 'package:track_n_go/feedback/feedback_screen.dart';
 import 'package:track_n_go/gift_card/gift_card.dart';
-import 'package:track_n_go/home/myTicket.dart';
-import 'package:track_n_go/home/notification.dart';
 import 'package:track_n_go/payment/payment_screen.dart';
 import 'package:dropdownfield/dropdownfield.dart';
 import 'package:track_n_go/screens/login_screen.dart';
 import 'package:track_n_go/support/support_screen.dart';
-import 'dart:async';
 import 'package:track_n_go/uitls/custom_clipper.dart';
+import 'package:track_n_go/home/bottom_bar.dart';
 import 'package:lottie/lottie.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 class SearchScreen extends StatefulWidget {
@@ -27,12 +27,16 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   DateTime currentDate = DateTime.now();
   final dateController= TextEditingController();
-  int _selectedItem = 0;
-  var _pages= [myTicket(),notification()];
+
+  @override
   void initState(){
+    readData();
     super.initState();
   }
   String city;
+  String Name;
+  String Email;
+  bool dataarrived=false;
   List<String> CityName = ["Bagalkot", "Ballari", "Belagavi", "Bengaluru",
     "Bidar", "Chamarajanagar", "Chikballapur", "Chikkamagaluru",
     "Chitradurga", "Dakshina Kannada", "Davangere", "Dharwad", "Gadag",
@@ -47,14 +51,14 @@ class _SearchScreenState extends State<SearchScreen> {
     dateController.dispose();
     super.dispose();
   }
-
+  FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        child: Container(
+        child:  Container(
           color: Colors.white,
-          child: ListView(
+          child: dataarrived? ListView(
             padding: EdgeInsets.only(top: 0),
             physics: NeverScrollableScrollPhysics(),
             children: [
@@ -64,7 +68,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   height: 220,
                   child: UserAccountsDrawerHeader(
                       accountName: Text(
-                          'XYZ',
+                          Name,
                         style: TextStyle(
                           color: Colors.yellow,
                           fontSize: 24,
@@ -74,7 +78,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       accountEmail: Padding(
                         padding: const EdgeInsets.only(bottom: 20.0),
                         child: Text(
-                            'xyz@gmail.com',
+                            Email,
                           style: TextStyle(
                             color: Colors.yellow,
                             fontSize: 18,
@@ -98,7 +102,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               ListTile(
                 leading: Icon(Icons.assignment_ind_rounded),
-                title: Text('Add Identity', style: TextStyle(fontSize: 18.0),
+                title: Text('My Profile', style: TextStyle(fontSize: 18.0),
                 ),
                 onTap: () {
                   Navigator.of(context).pushNamed(profile.routeName);
@@ -140,12 +144,19 @@ class _SearchScreenState extends State<SearchScreen> {
                 leading: Icon(Icons.logout),
                 title: Text('Log Out', style: TextStyle(fontSize: 18.0),
                 ),
-                onTap: () {
+                onTap: () async{
+                  await auth.signOut();
                   Navigator.of(context).pushNamed(LoginScreen.routeName);
                 },
               ),
             ],
-          ),
+          ):Container(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(child: CircularProgressIndicator()),
+            ],
+          )),
         ),
       ),
 
@@ -186,7 +197,7 @@ class _SearchScreenState extends State<SearchScreen> {
         {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 30,),
-            color: Colors.white,
+            color: Colors.white10,
             width: double.infinity,
             child: SingleChildScrollView(
               child: ConstrainedBox(
@@ -258,61 +269,35 @@ class _SearchScreenState extends State<SearchScreen> {
                           color: Colors.purple[900],
                           textColor: Colors.yellowAccent,
                           onPressed: () {
-                            Navigator.of(context).pushNamed(SearchScreen.routeName);
+                            Navigator.of(context).pushNamed(bottomBar.routeName);
                           },
                         ),
                       ]
-
                   ),
                 ),
-
               ),
-
           );
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          type:
-          BottomNavigationBarType.fixed,
-          backgroundColor: Colors.purple[900],
-          selectedItemColor: Colors.yellowAccent,
-          unselectedItemColor:
-          Colors.white.withOpacity(.60),
-
-        selectedFontSize: 14,
-        unselectedFontSize: 14,
-        //currentIndex: 0,
-        //showSelectedLabels: false,
-        //showUnselectedLabels: false,
-        currentIndex: _selectedItem,
-
-        onTap: (index) {
-            setState(() {
-              _selectedItem=index;
-
-            });
-        },
-        items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-        // ignore: deprecated_member_use
-        title: Text('Home'),
-        icon: Icon(Icons.home),
-        ),
-        BottomNavigationBarItem(
-        // ignore: deprecated_member_use
-        title: Text('My Ticket'),
-        icon: Icon(Icons.article_outlined),
-        ),
-        BottomNavigationBarItem(
-        // ignore: deprecated_member_use
-        title: Text('Notification'),
-        icon: Icon(Icons.notifications_active),
-          ),
-        ],
-
-       // onTap: () {},
-        //onTap: _onItemTap;
-      ),
     );
+  }
+  Future<void> readData() async {
+
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final String userID = auth.currentUser.uid;
+    DocumentReference docRef = FirebaseFirestore.instance
+        .collection('track_n_go')
+        .doc('user_info')
+        .collection('user_details').doc(userID);
+    await docRef.get().then((querySnapshot){
+      Name = querySnapshot.get('name');
+
+      Email = querySnapshot.get('email');
+
+    } );
+
+    setState(() {
+      dataarrived = true;
+    });
   }
 }

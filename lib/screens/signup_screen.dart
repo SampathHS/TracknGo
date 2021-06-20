@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:track_n_go/home/searchscreen.dart';
+import 'package:track_n_go/app_list/profile.dart';
+import 'package:track_n_go/home/bottom_bar.dart';
+import 'package:track_n_go/screens/details_screen.dart';
+import 'package:track_n_go/screens/components/auth.dart';
 
 
 class SignupScreen extends StatefulWidget {
@@ -9,7 +12,8 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-
+String email;
+String password;
   bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,6 @@ class _SignupScreenState extends State<SignupScreen> {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [Colors.purple,Colors.deepPurple[900]],
-
                 )
             ),
             padding: const EdgeInsets.symmetric(horizontal: 30,),
@@ -56,6 +59,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       SizedBox(height: 5,),
 
                       TextField(
+                        onChanged: (v){
+                          setState(() {
+                            email=v;
+                          });
+                        },
                         style: TextStyle(fontSize: 18,color: Colors.black54),
                         decoration: InputDecoration(
                             filled: true,
@@ -80,6 +88,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       SizedBox(height: 5,),
 
                       TextField(
+                        onChanged: (v){
+                          setState(() {
+                            password=v;
+                          });
+                        },
                         obscureText: _isObscure,
                         style: TextStyle(fontSize: 18,color: Colors.black54),
                         decoration: InputDecoration(
@@ -110,61 +123,25 @@ class _SignupScreenState extends State<SignupScreen> {
 
                         ),
                       ),
-                      SizedBox(height: 20,),
 
-                      Text('Confirm Password',style: TextStyle(color: Colors.yellowAccent),),
-                      SizedBox(height: 5,),
-
-
-
-                      TextField(
-                        obscureText: true,
-                        style: TextStyle(fontSize: 18,color: Colors.black54),
-                        decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            hintText: 'Confirm Password',
-                            prefixIcon: Icon(Icons.lock),
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                  _isObscure ?
-                                  Icons.visibility : Icons.visibility_off
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _isObscure=!_isObscure;
-                                });
-                              },
-                            ),
-                            contentPadding: const EdgeInsets.all(15),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.circular(5),
-                            )
-
-                        ),
-                      ),
                       SizedBox(height: 30,),
 
 
+                      // ignore: deprecated_member_use
                       FlatButton(
                         child: Text('SignUp',
                           style: TextStyle(fontSize: 20),
 
                         ),
                         shape: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.purple[900], width: 2),
-                          borderRadius: BorderRadius.circular(5),
+                          borderSide: BorderSide(color: Colors.purple, width: 2),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         padding: const EdgeInsets.all(15),
                         color: Colors.yellowAccent,
                         textColor: Colors.black,
                         onPressed: () {
-                          Navigator.of(context).pushNamed(SearchScreen.routeName);
+                         MyAuth.signUp(email, password, context);
                         },
                       )
                     ]

@@ -88,7 +88,16 @@ class _paymentState extends State<payment> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple[900],
-        title: Text('Add Money to Wallet',style: TextStyle(color: Colors.yellow),),
+        title: Text('Add Money to Wallet',
+          style: TextStyle(color: Colors.yellow),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          color: Colors.yellowAccent,
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),

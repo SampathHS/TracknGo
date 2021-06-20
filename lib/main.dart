@@ -5,6 +5,8 @@ import 'package:track_n_go/gift_card/offer_screen/offer_details.dart';
 import 'package:track_n_go/gift_card/offer_screen/offer_details2.dart';
 import 'package:track_n_go/gift_card/offer_screen/offer_details3.dart';
 import 'package:track_n_go/gift_card/offer_screen/offer_details4.dart';
+import 'package:track_n_go/home/bottom_bar.dart';
+import 'package:track_n_go/screens/details_screen.dart';
 import 'package:track_n_go/screens/splash_screen.dart';
 import 'package:track_n_go/app_list/profile.dart';
 import 'package:track_n_go/feedback/feedback_screen.dart';
@@ -13,10 +15,13 @@ import 'package:track_n_go/payment/payment_screen.dart';
 import 'package:track_n_go/screens/login_screen.dart';
 import 'package:track_n_go/screens/signup_screen.dart';
 import 'package:track_n_go/support/support_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -44,6 +49,8 @@ class MyApp extends StatelessWidget {
         offer3.routeName: (ctx) => offer3(),
         offer4.routeName: (ctx) => offer4(),
         support.routeName: (ctx) => support(),
+        bottomBar.routeName: (ctx) => bottomBar(),
+        details.routeName: (ctx) => details(),
       },
     );
   }

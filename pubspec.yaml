@@ -45,8 +45,10 @@ dev_dependencies:
   lottie: ^0.7.0+1
   dropdownfield: ^1.0.3
   firebase_auth: ^1.2.0
-  cloud_firestore: ^2.2.0
+  firebase_core: ^1.2.1
+  cloud_firestore: ^1.0.7
   url_launcher: ^6.0.5
+  flutter_svg: ^0.22.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -79,6 +81,7 @@ flutter:
     - assets/gift/gift5.png
     - assets/gift/gift_card.json
     - assets/support.json
+    - assets/camera.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

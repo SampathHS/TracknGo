@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "852769935953",
-    "project_id": "track-n-go-362fb",
-    "storage_bucket": "track-n-go-362fb.appspot.com"
+    "project_number": "430376382477",
+    "project_id": "track-n-go-2a8f0",
+    "storage_bucket": "track-n-go-2a8f0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:852769935953:android:1110315d345651fb859e70",
+        "mobilesdk_app_id": "1:430376382477:android:b645481fc6d30d380da544",
         "android_client_info": {
           "package_name": "com.example.track_n_go"
         }
       },
       "oauth_client": [
         {
-          "client_id": "852769935953-itbhgge7in2h4054ss0gd1r0s9t2e0qp.apps.googleusercontent.com",
+          "client_id": "430376382477-nstv992n9av0o5rrff64calv5fiqf5n6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDY3j3HTYf_ghr6gnKS1trx1baYdeeimCs"
+          "current_key": "AIzaSyBYYc0M5hVL5PSxZ2pTuJIlcy4waObv5UA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "852769935953-itbhgge7in2h4054ss0gd1r0s9t2e0qp.apps.googleusercontent.com",
+              "client_id": "430376382477-nstv992n9av0o5rrff64calv5fiqf5n6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

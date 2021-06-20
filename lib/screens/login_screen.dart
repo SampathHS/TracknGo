@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:track_n_go/home/searchscreen.dart';
+import 'package:track_n_go/home/bottom_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/login';
@@ -113,19 +113,20 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(height: 30,),
+            // ignore: deprecated_member_use
             FlatButton(
               child: Text('Login',
                 style: TextStyle(fontSize: 20),
               ),
               shape: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.purple[900], width: 2),
-                borderRadius: BorderRadius.circular(5),
+                borderSide: BorderSide(color: Colors.purple, width: 2),
+                borderRadius: BorderRadius.circular(10),
               ),
               padding: const EdgeInsets.all(15),
               color: Colors.yellowAccent,
               textColor: Colors.black,
               onPressed: () {
-                Navigator.of(context).pushNamed(SearchScreen.routeName);
+                Navigator.of(context).pushNamed(bottomBar.routeName);
               },
             ),
 

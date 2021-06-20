@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class profile extends StatefulWidget {
   static const routeName = '/profile';
@@ -9,6 +11,17 @@ class profile extends StatefulWidget {
 }
 
 class _profileState extends State<profile> {
+  String Name;
+  String Email;
+  String PhoneNumber;
+  String Address;
+  String insurence;
+  bool dataarrived=false;
+  @override
+  void initState() {
+    readData();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +40,7 @@ class _profileState extends State<profile> {
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0),
-        child: Column(
+        child: dataarrived? Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Center(
@@ -50,7 +63,7 @@ class _profileState extends State<profile> {
             ),
             //SizedBox(height: 5.0),
             Text(
-              'XYZ',
+              Name,
               style: TextStyle(
                 color: Colors.black,
                 letterSpacing: 1.0,
@@ -69,7 +82,7 @@ class _profileState extends State<profile> {
             ),
             //SizedBox(height: 2.0),
             Text(
-              'xyz@gmail.com',
+              Email,
               style: TextStyle(
                 color: Colors.black,
                 letterSpacing: 1.0,
@@ -88,7 +101,7 @@ class _profileState extends State<profile> {
             ),
             //SizedBox(height: 2.0),
             Text(
-              '+91 987965745',
+              PhoneNumber,
               style: TextStyle(
                 color: Colors.black,
                 letterSpacing: 1.0,
@@ -107,7 +120,7 @@ class _profileState extends State<profile> {
             ),
             //SizedBox(height: 2.0),
             Text(
-              '25/A MG road Tumkur',
+              Address,
               style: TextStyle(
                 color: Colors.black,
                 letterSpacing: 1.0,
@@ -126,7 +139,7 @@ class _profileState extends State<profile> {
             ),
             //SizedBox(height: 2.0),
             Text(
-              'YES',
+              insurence,
               style: TextStyle(
                 color: Colors.black,
                 letterSpacing: 1.0,
@@ -140,24 +153,34 @@ class _profileState extends State<profile> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 SizedBox(height: 20.0,),
-                FlatButton(
-                  child: Text('Update Profile',style: TextStyle(fontSize: 18),
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  padding: const EdgeInsets.all(15),
-                  color: Colors.purple[900],
-                  textColor: Colors.yellow,
-                  onPressed: () {
-                    // Navigator.of(context).pushNamed(SignupScreen.routeName);
-                  },
-                ),
+
               ],
             )
           ],
-        ),
+        ):CircularProgressIndicator(),
       ),
     );
   }
+
+  Future<void> readData() async {
+
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final String userID = auth.currentUser.uid;
+    DocumentReference docRef = FirebaseFirestore.instance
+        .collection('track_n_go')
+        .doc('user_info')
+        .collection('user_details').doc(userID);
+    await docRef.get().then((querySnapshot){
+      Name = querySnapshot.get('name');
+      Address =querySnapshot.get('address');
+      Email = querySnapshot.get('email');
+      insurence = querySnapshot.get('insurance');
+      PhoneNumber  = querySnapshot.get('phone_number');
+    } );
+
+    setState(() {
+      dataarrived = true;
+    });
+  }
+
 }

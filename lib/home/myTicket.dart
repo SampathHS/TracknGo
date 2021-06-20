@@ -7,7 +7,9 @@ class myTicket extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('hello'),
+        automaticallyImplyLeading: false,
+        title: Text('My Ticket',style: TextStyle(color: Colors.yellowAccent),),
+        backgroundColor: Colors.purple[900],
       ),
       body: Center(
         child: Text('myTicket'),
