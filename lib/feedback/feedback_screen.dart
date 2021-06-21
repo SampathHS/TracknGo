@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:wiredash/wiredash.dart';
 import 'package:lottie/lottie.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 class feedback extends StatefulWidget {
   static const routeName = '/feedback';
 
@@ -17,6 +20,11 @@ class _feedbackState extends State<feedback> {
       secret: 'ydd2b6q7vq51xdyns3dk9q2qf32vltdjmrckf6r0fxsng94n',
       projectId: 'track_n_go-lq8ragu',
       navigatorKey: _navigatorKey,
+      theme: WiredashThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.deepPurple[900],
+        secondaryColor: Colors.purple
+      ),
       child: MaterialApp(
         navigatorKey: _navigatorKey,
         home: fb(),
@@ -34,6 +42,15 @@ class fb extends StatefulWidget {
 }
 
 class _fbState extends State<fb> {
+  String Email;
+  bool dataarrived=false;
+
+  @override
+  void initState() {
+    readData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +81,12 @@ class _fbState extends State<fb> {
                 padding: const EdgeInsets.all(15),
                 color: Colors.purple[900],
                 textColor: Colors.yellowAccent,
-                onPressed:() => Wiredash.of(context).show(),
+                onPressed:() {
+                  Wiredash.of(context).setUserProperties(
+                    userEmail: Email,
+                  );
+                  Wiredash.of(context).show();
+                }
               )
             ],
           ),
@@ -72,5 +94,23 @@ class _fbState extends State<fb> {
       ),
     );
   }
+
+  Future<void> readData() async {
+
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final String userID = auth.currentUser.uid;
+    DocumentReference docRef = FirebaseFirestore.instance
+        .collection('track_n_go')
+        .doc('user_info')
+        .collection('user_details').doc(userID);
+    await docRef.get().then((querySnapshot){
+      Email = querySnapshot.get('email');
+    } );
+
+    setState(() {
+      dataarrived = true;
+    });
+  }
+
 }
 
