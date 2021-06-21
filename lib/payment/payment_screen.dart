@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:toast/toast.dart';
 import 'package:lottie/lottie.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 
@@ -16,6 +18,9 @@ class payment extends StatefulWidget {
 }
 
 class _paymentState extends State<payment> {
+  String PhoneNumber;
+  String Email;
+  bool dataarrived=false;
   static const platfrom = const MethodChannel("razorpzy_flutter");
 
   Razorpay _razorpay;
@@ -23,6 +28,7 @@ class _paymentState extends State<payment> {
 
   @override
   void initState() {
+    readData();
     // TODO: implement initState
     super.initState();
 
@@ -49,8 +55,8 @@ class _paymentState extends State<payment> {
       "description" : "Payment",
       "timeout" : 120,
       "prefill" : {
-        "contact" : "9686374957",
-        "email" : "1si18cs098@sit.ac.in",
+        "contact" : PhoneNumber,
+        "email" : Email,
       },
       "external" : {
         "wallets":["paytm"]
@@ -122,5 +128,22 @@ class _paymentState extends State<payment> {
         ),
       ),
     );
+  }
+  Future<void> readData() async {
+
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final String userID = auth.currentUser.uid;
+    DocumentReference docRef = FirebaseFirestore.instance
+        .collection('track_n_go')
+        .doc('user_info')
+        .collection('user_details').doc(userID);
+    await docRef.get().then((querySnapshot){
+      PhoneNumber  = querySnapshot.get('phone_number');
+      Email = querySnapshot.get('email');
+    } );
+
+    setState(() {
+      dataarrived = true;
+    });
   }
 }
