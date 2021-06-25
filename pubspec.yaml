@@ -82,6 +82,7 @@ flutter:
     - assets/gift/gift_card.json
     - assets/support.json
     - assets/camera.svg
+    - assets/image_detail.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:track_n_go/app_list/profile.dart';
+import 'package:track_n_go/bus_list/bus_list.dart';
 import 'package:track_n_go/feedback/feedback_screen.dart';
 import 'package:track_n_go/gift_card/gift_card.dart';
 import 'package:track_n_go/payment/payment_screen.dart';
@@ -269,7 +270,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           color: Colors.purple[900],
                           textColor: Colors.yellowAccent,
                           onPressed: () {
-                            Navigator.of(context).pushNamed(bottomBar.routeName);
+                            Navigator.of(context).pushNamed(Reservations.routeName);
                           },
                         ),
                       ]
