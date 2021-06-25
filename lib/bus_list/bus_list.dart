@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:track_n_go/bus_list/bus_details.dart';
 
 
@@ -59,9 +58,10 @@ class _ReservationsState extends State<Reservations> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                height: 650,
+                                height: 660,
                                 child: ListView(
                                     children: <Widget>[
+                                      // ignore: deprecated_member_use
                                       FlatButton(
                                         padding: const EdgeInsets.all(15),
                                         child: _reservationsItem(),
@@ -71,6 +71,7 @@ class _ReservationsState extends State<Reservations> {
                                       ),
 
 
+                                      // ignore: deprecated_member_use
                                       FlatButton(
                                         padding: const EdgeInsets.all(15),
                                         child: _reservationsItem1(),
@@ -78,6 +79,7 @@ class _ReservationsState extends State<Reservations> {
                                           Navigator.of(context).pushNamed(Reservations.routeName);
                                         },
                                       ),
+                                      // ignore: deprecated_member_use
                                       FlatButton(
                                         padding: const EdgeInsets.all(15),
                                         child: _reservationsItem2(),
@@ -85,6 +87,7 @@ class _ReservationsState extends State<Reservations> {
                                           Navigator.of(context).pushNamed(BusDetailsPage.routeName);
                                         },
                                       ),
+                                      // ignore: deprecated_member_use
                                       FlatButton(
                                         padding: const EdgeInsets.all(15),
                                         child: _reservationsItem3(),
@@ -115,8 +118,8 @@ class _ReservationsState extends State<Reservations> {
 Widget _reservationsItem() {
   return Container(
     width: 500,
-    height: 200,
-    margin: EdgeInsets.only(bottom: 10),
+    height: 190,
+    margin: EdgeInsets.only(bottom: 00),
     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
     decoration: BoxDecoration(
         color: Colors.white,
@@ -133,7 +136,7 @@ Widget _reservationsItem() {
             Text('\u{20B9}400',style: TextStyle(fontWeight:FontWeight.bold,fontSize: 19)),
           ],
         ),
-        SizedBox(height: 10),
+        //SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -149,8 +152,8 @@ Widget _reservationsItem() {
 Widget _reservationsItem1() {
   return Container(
     width: 500,
-    height: 200,
-    margin: EdgeInsets.only(bottom: 10),
+    height: 190,
+    margin: EdgeInsets.only(bottom: 00),
     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
     decoration: BoxDecoration(
         color: Colors.white,
@@ -167,7 +170,7 @@ Widget _reservationsItem1() {
             Text('\u{20B9}420',style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20)),
           ],
         ),
-        SizedBox(height: 5),
+        //SizedBox(height: 5),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -183,8 +186,8 @@ Widget _reservationsItem1() {
 Widget _reservationsItem2() {
   return Container(
     width: 500,
-    height: 200,
-    margin: EdgeInsets.only(bottom: 10),
+    height: 190,
+    margin: EdgeInsets.only(bottom: 00),
     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
     decoration: BoxDecoration(
         color: Colors.white,
@@ -201,7 +204,7 @@ Widget _reservationsItem2() {
             Text('\u{20B9}500',style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20)),
           ],
         ),
-        SizedBox(height: 10),
+        //SizedBox(height: 1),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -217,8 +220,8 @@ Widget _reservationsItem2() {
 Widget _reservationsItem3() {
   return Container(
     width: 500,
-    height: 200,
-    margin: EdgeInsets.only(bottom: 10),
+    height: 190,
+    margin: EdgeInsets.only(bottom: 00),
     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
     decoration: BoxDecoration(
         color: Colors.white,
@@ -232,10 +235,11 @@ Widget _reservationsItem3() {
             Text("Volvo Travels",
                 style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
             SizedBox(width: 80),
-            Text('\u{20B9}480',style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20)),
+            Text('\u{20B9}480',style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20)
+            ),
           ],
         ),
-        SizedBox(height: 10),
+        //SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -254,6 +258,7 @@ Widget _itemDepartment() {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
+       SizedBox(height: 15,),
         Text("Departure", style: TextStyle(color: Colors.black54)),
         SizedBox(height: 10),
         Text("8:00 PM",
@@ -280,13 +285,13 @@ Widget _itemDepartment2() {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text("Arrive", style: TextStyle(color: Colors.black54)),
+        Text("Arrival", style: TextStyle(color: Colors.black54)),
         SizedBox(height: 10),
         Text("11:00 AM",
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         SizedBox(height: 1),
         Text("TMK", style: TextStyle(color: Colors.black54)),
-        SizedBox(height: 20),
+        SizedBox(height: 35),
       ],
     ),
   );
