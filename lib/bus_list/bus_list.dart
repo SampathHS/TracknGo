@@ -76,7 +76,7 @@ class _ReservationsState extends State<Reservations> {
                                         padding: const EdgeInsets.all(15),
                                         child: _reservationsItem1(),
                                         onPressed:(){
-                                          Navigator.of(context).pushNamed(Reservations.routeName);
+                                          Navigator.of(context).pushNamed(BusDetailsPage.routeName);
                                         },
                                       ),
                                       // ignore: deprecated_member_use
@@ -131,7 +131,7 @@ Widget _reservationsItem() {
             Icon(Icons.directions_bus_sharp, color: Colors.purple[900], size: 32),
             SizedBox(width: 15),
             Text("SRS Travels",
-                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold,),),
             SizedBox(width: 115),
             Text('\u{20B9}400',style: TextStyle(fontWeight:FontWeight.bold,fontSize: 19)),
           ],
@@ -264,7 +264,7 @@ Widget _itemDepartment() {
         Text("8:00 PM",
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         SizedBox(height: 1),
-        Text("DVG", style: TextStyle(color: Colors.black54)),
+        Text("DVG", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),),
         SizedBox(height: 20),
         Row(
           children: <Widget>[
@@ -272,11 +272,13 @@ Widget _itemDepartment() {
               Icons.star,
               color: Colors.purple[900],
             ),
-            Text("4.1", style: TextStyle(color: Colors.black54)),
+            Text("4.1", style: TextStyle(color: Colors.black54),
+            ),
           ],
         ),
       ],
     ),
+
   );
 }
 
@@ -290,7 +292,7 @@ Widget _itemDepartment2() {
         Text("11:00 AM",
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         SizedBox(height: 1),
-        Text("TMK", style: TextStyle(color: Colors.black54)),
+        Text("TMK", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
         SizedBox(height: 35),
       ],
     ),

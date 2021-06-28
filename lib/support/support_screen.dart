@@ -21,6 +21,36 @@ _sendingSMS() async {
   }
 }
 
+_launchURL() async{
+  const url= 'https://www.linkedin.com/in/sampath-h-s-571122214/';
+  if(await canLaunch(url)) {
+    await launch(url);
+  }
+  else{
+    throw 'could not launch $url';
+  }
+}
+
+_launchURL2() async{
+  const url= 'https://github.com/SampathHS/TracknGo/';
+  if(await canLaunch(url)) {
+    await launch(url);
+  }
+  else{
+    throw 'could not launch $url';
+  }
+}
+
+_launchURL3() async{
+  const url= 'https://github.com/SampathHS/TracknGo/';
+  if(await canLaunch(url)) {
+    await launch(url);
+  }
+  else{
+    throw 'could not launch $url';
+  }
+}
+
 
 class support extends StatefulWidget {
   static const routeName = '/support';
@@ -75,6 +105,7 @@ class _supportState extends State<support> {
                             //fontWeight: FontWeight.bold,
                           ),
                         ),
+                        // ignore: deprecated_member_use
                         FlatButton(
                           child: Text('Click Here',
                             style: TextStyle(fontSize: 20),
@@ -100,6 +131,7 @@ class _supportState extends State<support> {
                           ),
                         ),
 
+                        // ignore: deprecated_member_use
                         FlatButton(
                           child: Text('Click Here',
                             style: TextStyle(fontSize: 20),
@@ -112,6 +144,57 @@ class _supportState extends State<support> {
                           color: Colors.purple[900],
                           textColor: Colors.yellowAccent,
                           onPressed: _sendingSMS,
+                        ),
+                        SizedBox(height: 20,),
+                        Text('Developers',
+                        style: TextStyle(fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue),
+                        ),
+                        SizedBox(height: 10,),
+                        Row(
+                          children: <Widget>[
+                            Text('Sampath H S',
+                            style: TextStyle(fontSize: 17,
+                            color: Colors.black54),
+                            ),
+                            SizedBox(width: 185,),
+                            // ignore: deprecated_member_use
+                            FlatButton(
+                              child: Image.asset('assets/linkedin.png',height: 22,),
+                              onPressed: _launchURL,
+                            ),
+                          ],
+                        ),
+                        //SizedBox(height: 10,),
+                        Row(
+                          children: <Widget>[
+                            Text('Sahana A S',
+                              style: TextStyle(fontSize: 17,
+                                  color: Colors.black54),
+                            ),
+                            SizedBox(width: 197,),
+                            // ignore: deprecated_member_use
+                            FlatButton(
+                              onPressed: _launchURL2,
+                              child: Image.asset('assets/linkedin.png',height: 22,),
+                            )
+                          ],
+                        ),
+                        //SizedBox(height: 10,),
+                        Row(
+                          children: <Widget>[
+                            Text('Shifa Ilman',
+                              style: TextStyle(fontSize: 17,
+                                  color: Colors.black54),
+                            ),
+                            SizedBox(width: 197,),
+                            // ignore: deprecated_member_use
+                            FlatButton(
+                              onPressed: _launchURL3,
+                              child: Image.asset('assets/linkedin.png',height: 22,),
+                            ),
+                          ],
                         ),
                       ],
                     ),

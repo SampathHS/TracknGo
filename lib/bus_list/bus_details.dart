@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:track_n_go/bus_seats/bus_seats.dart';
 
 class BusDetailsPage extends StatefulWidget {
   static const routeName = '/bus_details';
@@ -134,7 +135,9 @@ class _BusDetailsPageState extends State<BusDetailsPage> {
                             vertical: 16.0,
                             horizontal: 32.0,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(bus_seats.routeName);
+                          },
                         ),
                       ),
                       const SizedBox(height: 30.0),
