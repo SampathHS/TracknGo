@@ -1,6 +1,6 @@
 # track_n_go
 
-The Online Bus Ticket Reservation System, built on Flutter and Firebase. an application that allows visitors to check bus ticket availability, buy a bus ticket, and pay the bus ticket online.
+Online Bus Ticket Reservation System, built on Flutter and Firebase. An application that allows you to check bus ticket availability, purchase a bus ticket and pay the bus ticket online.
 
 ## Getting Started
 
