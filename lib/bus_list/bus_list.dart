@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:track_n_go/bus_list/bus_details.dart';
+import 'package:track_n_go/bus_list/bus_details/volvo.dart';
+import 'package:track_n_go/bus_list/bus_details/greenLine_bus.dart';
+import 'package:track_n_go/bus_list/bus_details/srs_bus.dart';
+import 'package:track_n_go/bus_list/bus_details/vrl_bus.dart';
 
 
 class Reservations extends StatefulWidget {
@@ -68,7 +71,7 @@ class _ReservationsState extends State<Reservations> {
                                         padding: const EdgeInsets.all(15),
                                         child: _reservationsItem1(),
                                         onPressed:(){
-                                          Navigator.of(context).pushNamed(BusDetailsPage.routeName);
+                                          Navigator.of(context).pushNamed(srs.routeName);
                                         },
                                       ),
 
@@ -78,7 +81,7 @@ class _ReservationsState extends State<Reservations> {
                                         padding: const EdgeInsets.all(15),
                                         child: _reservationsItem2(),
                                         onPressed:(){
-                                          Navigator.of(context).pushNamed(BusDetailsPage.routeName);
+                                          Navigator.of(context).pushNamed(greenLine.routeName);
                                         },
                                       ),
                                       // ignore: deprecated_member_use
@@ -86,7 +89,7 @@ class _ReservationsState extends State<Reservations> {
                                         padding: const EdgeInsets.all(15),
                                         child: _reservationsItem3(),
                                         onPressed:(){
-                                          Navigator.of(context).pushNamed(BusDetailsPage.routeName);
+                                          Navigator.of(context).pushNamed(vrl.routeName);
                                         },
                                       ),
                                       // ignore: deprecated_member_use
@@ -94,7 +97,7 @@ class _ReservationsState extends State<Reservations> {
                                         padding: const EdgeInsets.all(15),
                                         child: _reservationsItem4(),
                                         onPressed:(){
-                                          Navigator.of(context).pushNamed(BusDetailsPage.routeName);
+                                          Navigator.of(context).pushNamed(volvo.routeName);
                                         },
                                       ),
                                     ]

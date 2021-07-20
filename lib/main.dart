@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:track_n_go/Passenger_Details/passenger_details.dart';
+import 'package:track_n_go/bus_list/bus_details/greenLine_bus.dart';
+import 'package:track_n_go/bus_list/bus_details/srs_bus.dart';
+import 'package:track_n_go/bus_list/bus_details/vrl_bus.dart';
 import 'package:track_n_go/bus_seats/bus_seats.dart';
 import 'package:track_n_go/gift_card/gift_card.dart';
 import 'package:track_n_go/gift_card/offer_screen/offer_details.dart';
@@ -18,7 +21,7 @@ import 'package:track_n_go/screens/login_screen.dart';
 import 'package:track_n_go/screens/signup_screen.dart';
 import 'package:track_n_go/support/support_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:track_n_go/bus_list/bus_details.dart';
+import 'package:track_n_go/bus_list/bus_details/volvo.dart';
 import 'package:track_n_go/bus_list/bus_list.dart';
 
 void main() async{
@@ -53,10 +56,13 @@ class MyApp extends StatelessWidget {
         support.routeName: (ctx) => support(),
         bottomBar.routeName: (ctx) => bottomBar(),
         details.routeName: (ctx) => details(),
-        BusDetailsPage.routeName: (ctx) => BusDetailsPage(),
         Reservations.routeName: (ctx) => Reservations(),
         bus_seats.routeName: (ctx) => bus_seats(),
         passenger.routeName: (ctx) => passenger(),
+        greenLine.routeName: (ctx) => greenLine(),
+        srs.routeName: (ctx) => srs(),
+        vrl.routeName: (ctx) => vrl(),
+        volvo.routeName: (ctx) => volvo(),
       },
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:track_n_go/Passenger_Details/passenger_details.dart';
 
 
 class bus_seats extends StatelessWidget {
@@ -92,12 +93,18 @@ class bus_seats extends StatelessWidget {
                               children: [
                                 SizedBox(height: 20,),
                                 IconButton(onPressed: null,icon: Icon(Icons.circle,color: Colors.lightGreenAccent)),
+                                //SizedBox( width:1.0),
+                                Text("Selected",style: TextStyle(fontSize: 15.0,),),
                                 SizedBox( width:10.0),
-                                Text("Available",style: TextStyle(fontSize: 20.0,),),
-                                SizedBox( width:30.0),
+
+                                IconButton(onPressed: null,icon: Icon(Icons.circle,color: Colors.grey)),
+                                //SizedBox( width:1.0),
+                                Text("Available",style: TextStyle(fontSize: 15.0,),),
+                                SizedBox( width:10.0),
+
                                 IconButton(onPressed: null,icon: Icon(Icons.circle,color: Colors.red)),
-                                SizedBox( width:10.0),
-                                Text("Reserved",style: TextStyle(fontSize: 20.0,),),
+                                //SizedBox( width:1.0),
+                                Text("Reserved",style: TextStyle(fontSize: 15.0,),),
 
 
                               ],
@@ -427,7 +434,11 @@ class bus_seats extends StatelessWidget {
                           SizedBox(height: 600.0),
                           SizedBox(width: 320.0),
 
-                          IconButton(icon: Icon(Icons.arrow_forward), onPressed: (){}),
+                          IconButton(icon: Icon(Icons.arrow_forward), onPressed: ()
+                          {
+                            Navigator.of(context).pushNamed(passenger.routeName);
+                          }
+                          ),
                         ],
                       ),
 

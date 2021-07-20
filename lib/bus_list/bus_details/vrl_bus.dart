@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:track_n_go/bus_seats/bus_seats.dart';
 
-class BusDetailsPage extends StatefulWidget {
-  static const routeName = '/bus_details';
+class vrl extends StatefulWidget {
+  static const routeName = '/vrl';
+  const vrl({Key key}) : super(key: key);
+
   @override
-  _BusDetailsPageState createState() => _BusDetailsPageState();
+  _vrlState createState() => _vrlState();
 }
 
-class _BusDetailsPageState extends State<BusDetailsPage> {
-  final String image = 'assets/image_detail.png';
-
+class _vrlState extends State<vrl> {
   @override
   Widget build(BuildContext context) {
+    final String image = 'assets/images/vrl.png';
     return Scaffold(
-      appBar:AppBar(title:Text(' Bus Details',
+      appBar:AppBar(title:Text('VRL Travels',
         style: TextStyle(color: Colors.yellowAccent),
       ),
         backgroundColor: Colors.purple[900],
@@ -42,8 +43,8 @@ class _BusDetailsPageState extends State<BusDetailsPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal:16.0),
                   child: Text(
-                    "SRS TRAVELS",
-                    style: TextStyle(color: Colors.white, fontSize: 28.0, fontWeight: FontWeight.bold),
+                    "VRL Travels",
+                    style: TextStyle(color: Colors.red, fontSize: 28.0, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Row(
@@ -146,7 +147,9 @@ class _BusDetailsPageState extends State<BusDetailsPage> {
                           fontSize: 18.0
                       ),),
                       const SizedBox(height: 10.0),
-                      Text("Started in 1971,we are proud to state that 'SRS Travels' has made tremendous progress in its chosen field and currently commands a fleet of nearly 5000 vehicles operating on 24/7 basis.", textAlign: TextAlign.justify, style: TextStyle(
+                      Text("Started in 1971,we are proud to state that 'VRL Travels' "
+                          "has made tremendous progress in its chosen field and currently "
+                          "commands a fleet of nearly 5000 vehicles operating on 24/7 basis.\n Visit: www.VRLtravels.com", textAlign: TextAlign.justify, style: TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 16.0
                       ),),
