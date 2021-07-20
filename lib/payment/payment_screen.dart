@@ -5,6 +5,7 @@ import 'package:toast/toast.dart';
 import 'package:lottie/lottie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 
@@ -71,22 +72,21 @@ class _paymentState extends State<payment> {
 
   }
 
-  void handlerPaymentSucess() {
-    print("Payment success");
-    Toast.show("Payment Success",context);
-    _razorpay.clear();
+  void handlerPaymentSucess(PaymentSuccessResponse response) {
+    Fluttertoast.showToast(msg: "Payment Success:" +
+    response.paymentId,
+    timeInSecForIosWeb: 100);
   }
 
-  void handlerErrorFailure() {
-    print("Payment success");
-    Toast.show("Payment Failure",context);
-    _razorpay.clear();
+  void handlerErrorFailure(PaymentFailureResponse response) {
+    Fluttertoast.showToast(msg: "Payment Failure:" + response.code.toString() + "-"+
+    response.message,
+    timeInSecForIosWeb: 100);
   }
 
-  void handlerExternalWallet() {
-    print("External wallet");
-    Toast.show("External Wallet",context);
-    _razorpay.clear();
+  void handlerExternalWallet(ExternalWalletResponse response) {
+   Fluttertoast.showToast(msg: 'External_Wallet:' + response.walletName,
+   timeInSecForIosWeb: 100);
   }
 
   @override

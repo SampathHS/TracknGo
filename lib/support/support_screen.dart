@@ -188,7 +188,7 @@ class _supportState extends State<support> {
                               style: TextStyle(fontSize: 17,
                                   color: Colors.black54),
                             ),
-                            SizedBox(width: 197,),
+                            SizedBox(width: 198,),
                             // ignore: deprecated_member_use
                             FlatButton(
                               onPressed: _launchURL3,

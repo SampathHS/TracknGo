@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:track_n_go/Passenger_Details/passenger_details.dart';
 import 'package:track_n_go/bus_seats/bus_seats.dart';
 import 'package:track_n_go/gift_card/gift_card.dart';
 import 'package:track_n_go/gift_card/offer_screen/offer_details.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
         BusDetailsPage.routeName: (ctx) => BusDetailsPage(),
         Reservations.routeName: (ctx) => Reservations(),
         bus_seats.routeName: (ctx) => bus_seats(),
+        passenger.routeName: (ctx) => passenger(),
       },
     );
   }

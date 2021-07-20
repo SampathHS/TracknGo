@@ -34,7 +34,7 @@ class _SearchScreenState extends State<SearchScreen> {
     readData();
     super.initState();
   }
-  String city;
+  String city1,city2;
   String Name;
   String Email;
   bool dataarrived=false;
@@ -45,6 +45,7 @@ class _SearchScreenState extends State<SearchScreen> {
     "Mandya", "Mysuru", "Raichur", "Ramanagara", "Shivamogga", "Tumakuru",
     "Udupi", "Uttara Kannada", "Vijayapura", "Yadgir",
   ];
+
 
   @override
  void dispose() {
@@ -216,9 +217,9 @@ class _SearchScreenState extends State<SearchScreen> {
                           children: <Widget>[
                             DropDownField(
                               onValueChanged: (dynamic value) {
-                                city = value;
+                                city1 = value;
                               },
-                              value: city,
+                              value: city1,
                               required: false,
                               hintText: 'Starting',
                               labelText: 'From',
@@ -227,9 +228,9 @@ class _SearchScreenState extends State<SearchScreen> {
                             SizedBox(height: 20.0,),
                             DropDownField(
                               onValueChanged: (dynamic value) {
-                                city = value;
+                                city2 = value;
                               },
-                              value: city,
+                              value: city2,
                               required: false,
                               hintText: 'Destination',
                               labelText: 'To',
@@ -295,10 +296,12 @@ class _SearchScreenState extends State<SearchScreen> {
 
       Email = querySnapshot.get('email');
 
-    } );
+    }
+    );
 
     setState(() {
       dataarrived = true;
-    });
+    }
+    );
   }
 }

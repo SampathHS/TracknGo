@@ -176,11 +176,13 @@ class _profileState extends State<profile> {
       Email = querySnapshot.get('email');
       insurence = querySnapshot.get('insurance');
       PhoneNumber  = querySnapshot.get('phone_number');
-    } );
+    }
+    );
 
     setState(() {
       dataarrived = true;
-    });
+    }
+    );
   }
 
 }

@@ -45,6 +45,7 @@ class _ReservationsState extends State<Reservations> {
                       ),
                       Positioned(
                        // bottom: 0,
+                        height: MediaQuery.of(context).size.height,
                         child: Container(
                           padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 00),
@@ -58,19 +59,10 @@ class _ReservationsState extends State<Reservations> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                height: 660,
+                                //width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height*0.89,
                                 child: ListView(
                                     children: <Widget>[
-                                      // ignore: deprecated_member_use
-                                      FlatButton(
-                                        padding: const EdgeInsets.all(15),
-                                        child: _reservationsItem(),
-                                        onPressed:(){
-                                          Navigator.of(context).pushNamed(BusDetailsPage.routeName);
-                                        },
-                                      ),
-
-
                                       // ignore: deprecated_member_use
                                       FlatButton(
                                         padding: const EdgeInsets.all(15),
@@ -79,6 +71,8 @@ class _ReservationsState extends State<Reservations> {
                                           Navigator.of(context).pushNamed(BusDetailsPage.routeName);
                                         },
                                       ),
+
+
                                       // ignore: deprecated_member_use
                                       FlatButton(
                                         padding: const EdgeInsets.all(15),
@@ -91,6 +85,14 @@ class _ReservationsState extends State<Reservations> {
                                       FlatButton(
                                         padding: const EdgeInsets.all(15),
                                         child: _reservationsItem3(),
+                                        onPressed:(){
+                                          Navigator.of(context).pushNamed(BusDetailsPage.routeName);
+                                        },
+                                      ),
+                                      // ignore: deprecated_member_use
+                                      FlatButton(
+                                        padding: const EdgeInsets.all(15),
+                                        child: _reservationsItem4(),
                                         onPressed:(){
                                           Navigator.of(context).pushNamed(BusDetailsPage.routeName);
                                         },
@@ -115,7 +117,7 @@ class _ReservationsState extends State<Reservations> {
   }
 }
 
-Widget _reservationsItem() {
+Widget _reservationsItem1() {
   return Container(
     width: 500,
     height: 190,
@@ -140,16 +142,70 @@ Widget _reservationsItem() {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            _itemDepartment(),
+            _itemDepartment_SRS(),
             _locationPlane(),
-            _itemDepartment2()
+            _itemDepartment2_SRS()
           ],
         )
       ],
     ),
   );
 }
-Widget _reservationsItem1() {
+
+Widget _itemDepartment_SRS() {
+  //final String from_City;
+  //final String to_City;
+  //final String departure;
+  //final String arrival;
+  //final String amount;
+  return Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(height: 15,),
+        Text("Departure", style: TextStyle(color: Colors.black54)),
+        SizedBox(height: 10),
+        Text("8:00 PM",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        SizedBox(height: 1),
+        Text("Davngere", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),),
+        SizedBox(height: 20),
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.star,
+              color: Colors.purple[900],
+            ),
+            Text("4.1", style: TextStyle(color: Colors.black54),
+            ),
+          ],
+        ),
+      ],
+    ),
+
+  );
+}
+
+Widget _itemDepartment2_SRS() {
+  return Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(height: 9,),
+        Text("Arrival", style: TextStyle(color: Colors.black54)),
+        SizedBox(height: 10),
+        Text("11:30 AM",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        SizedBox(height: 1),
+        Text("Tumkur", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+        SizedBox(height: 35),
+      ],
+    ),
+  );
+}
+
+
+Widget _reservationsItem2() {
   return Container(
     width: 500,
     height: 190,
@@ -174,16 +230,71 @@ Widget _reservationsItem1() {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            _itemDepartment(),
+            _itemDepartment_GreenLine(),
             _locationPlane(),
-            _itemDepartment2()
+            _itemDepartment2_GreenLine()
           ],
         )
       ],
     ),
   );
 }
-Widget _reservationsItem2() {
+
+
+Widget _itemDepartment_GreenLine() {
+  //final String from_City;
+  //final String to_City;
+  //final String departure;
+  //final String arrival;
+  //final String amount;
+  return Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(height: 15,),
+        Text("Departure", style: TextStyle(color: Colors.black54)),
+        SizedBox(height: 10),
+        Text("12:00 PM",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        SizedBox(height: 1),
+        Text("Davngere", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),),
+        SizedBox(height: 20),
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.star,
+              color: Colors.purple[900],
+            ),
+            Text("4.1", style: TextStyle(color: Colors.black54),
+            ),
+          ],
+        ),
+      ],
+    ),
+
+  );
+}
+
+Widget _itemDepartment2_GreenLine() {
+  return Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(height: 9,),
+        Text("Arrival", style: TextStyle(color: Colors.black54)),
+        SizedBox(height: 10),
+        Text("2:30 AM",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        SizedBox(height: 1),
+        Text("Tumkur", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+        SizedBox(height: 35),
+      ],
+    ),
+  );
+}
+
+
+Widget _reservationsItem3() {
   return Container(
     width: 500,
     height: 190,
@@ -208,16 +319,72 @@ Widget _reservationsItem2() {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            _itemDepartment(),
+            _itemDepartment_VRL(),
             _locationPlane(),
-            _itemDepartment2()
+            _itemDepartment2_VRL()
           ],
         )
       ],
     ),
   );
 }
-Widget _reservationsItem3() {
+
+
+Widget _itemDepartment_VRL() {
+  //final String from_City;
+  //final String to_City;
+  //final String departure;
+  //final String arrival;
+  //final String amount;
+  return Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(height: 15,),
+        Text("Departure", style: TextStyle(color: Colors.black54)),
+        SizedBox(height: 10),
+        Text("3:00 PM",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        SizedBox(height: 1),
+        Text("Davngere", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),),
+        SizedBox(height: 20),
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.star,
+              color: Colors.purple[900],
+            ),
+            Text("4.1", style: TextStyle(color: Colors.black54),
+            ),
+          ],
+        ),
+      ],
+    ),
+
+  );
+}
+
+Widget _itemDepartment2_VRL() {
+  return Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(height: 9,),
+        Text("Arrival", style: TextStyle(color: Colors.black54)),
+        SizedBox(height: 10),
+        Text("6:00 AM",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        SizedBox(height: 1),
+        Text("Tumkur", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+        SizedBox(height: 35),
+      ],
+    ),
+  );
+}
+
+
+
+Widget _reservationsItem4() {
   return Container(
     width: 500,
     height: 190,
@@ -243,9 +410,9 @@ Widget _reservationsItem3() {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            _itemDepartment(),
+            _itemDepartment_Volo(),
             _locationPlane(),
-            _itemDepartment2()
+            _itemDepartment2_Volo()
           ],
         )
       ],
@@ -253,18 +420,24 @@ Widget _reservationsItem3() {
   );
 }
 
-Widget _itemDepartment() {
+
+Widget _itemDepartment_Volo() {
+  //final String from_City;
+  //final String to_City;
+  //final String departure;
+  //final String arrival;
+  //final String amount;
   return Container(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-       SizedBox(height: 15,),
+        SizedBox(height: 15,),
         Text("Departure", style: TextStyle(color: Colors.black54)),
         SizedBox(height: 10),
-        Text("8:00 PM",
+        Text("6:00 PM",
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         SizedBox(height: 1),
-        Text("DVG", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),),
+        Text("Davngere", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),),
         SizedBox(height: 20),
         Row(
           children: <Widget>[
@@ -282,22 +455,27 @@ Widget _itemDepartment() {
   );
 }
 
-Widget _itemDepartment2() {
+Widget _itemDepartment2_Volo() {
   return Container(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
+        SizedBox(height: 9,),
         Text("Arrival", style: TextStyle(color: Colors.black54)),
         SizedBox(height: 10),
-        Text("11:00 AM",
+        Text("8:30 AM",
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         SizedBox(height: 1),
-        Text("TMK", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+        Text("Tumkur", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
         SizedBox(height: 35),
       ],
     ),
   );
 }
+
+
+
+
 
 Widget _locationPlane() {
   return Container(
@@ -329,4 +507,3 @@ Widget _locationPlane() {
     ),
   );
 }
-

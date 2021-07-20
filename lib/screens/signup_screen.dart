@@ -134,7 +134,7 @@ String password;
 
                         ),
                         shape: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.purple, width: 2),
+                          borderSide: BorderSide(color: Colors.transparent, width: 2),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         padding: const EdgeInsets.all(15),
