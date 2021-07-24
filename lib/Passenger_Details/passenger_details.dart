@@ -4,7 +4,8 @@ import 'package:lottie/lottie.dart';
 
 class passenger extends StatefulWidget {
   static const routeName = '/passenger';
-  const passenger({Key key}) : super(key: key);
+  final String price;
+  const passenger({Key key,this.price}) : super(key: key);
 
 
   @override
@@ -251,7 +252,11 @@ class _passengerState extends State<passenger> {
                         color: Colors.purple[900],
                         textColor: Colors.yellowAccent,
                         onPressed: () {
-                          Navigator.of(context).pushNamed(payment.routeName);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => payment(price: widget.price,)),
+                          );
+                         // Navigator.of(context).pushNamed(payment.routeName);
                         },
                       ),
                     ),

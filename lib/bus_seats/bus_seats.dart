@@ -2,8 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:track_n_go/Passenger_Details/passenger_details.dart';
 
 
-class bus_seats extends StatelessWidget {
+class bus_seats extends StatefulWidget {
   static const routeName = '/bus_seats';
+  final String busname;
+  final String from;
+  final String to;
+  final String date;
+  final String price;
+
+
+  bus_seats({this.busname, this.from, this.to,this.date,this.price});
+
+  @override
+  _bus_seatsState createState() => _bus_seatsState();
+}
+
+class _bus_seatsState extends State<bus_seats> {
+  bool _checkBoxVal = true;
+  bool dataarrived=false;
+
+
+
   Widget buildButton(String text,Function  handler,)
   {
     return Material(
@@ -37,11 +56,11 @@ class bus_seats extends StatelessWidget {
                   }),
               title: RichText(
                   text: TextSpan(
-                      text: "Hyderabad->Banglore",
+                      text: widget.from!=null? widget.from+"=>"+widget.to:"",
                       style: TextStyle(fontSize: 20),
                       children: <TextSpan>[
                         TextSpan(
-                          text: '\nNew Kaleshwari Travels,01 Jun 2021',
+                          text: widget.busname!=null? "\n"+widget.busname+","+widget.date:"",
                           style: TextStyle(fontSize: 14),
                         ),
                       ]
@@ -308,58 +327,71 @@ class bus_seats extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height:30.0),
-
                       Row(
-                          children: <Widget> [
-                            RaisedButton(
-                              child: Text("A"),
-                              onPressed: (){},
-                              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
+                        children: <Widget>[
+                          Checkbox(
+                              activeColor: Colors.blue,
+                              onChanged: (bool value) {
+                                setState(() => this._checkBoxVal = value);
+                              },
+                              value: this._checkBoxVal,
                             ),
-
-                          ]
-
+                          Text(
+                            widget.from!=null? widget.from+" Bus Stand ":"",style: TextStyle(fontSize: 20,fontStyle: FontStyle.italic),
+                          ),
+                        ],
                       ),
-                      SizedBox(height:10.0),
-
-                      Row(
-                          children: <Widget> [
-                            RaisedButton(
-                              child: Text("B"),
-                              onPressed: (){},
-                              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
-                            ),
-
-                          ]
-
-                      ),
-
-                      SizedBox(height:10.0),
-
-                      Row(
-                          children: <Widget> [
-                            RaisedButton(
-                              child: Text("C"),
-                              onPressed: (){},
-                              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
-                            ),
-
-                          ]
-
-                      ),
-                      SizedBox(height:10.0),
-
-                      Row(
-                          children: <Widget> [
-                            RaisedButton(
-                              child: Text("D"),
-                              onPressed: (){},
-                              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
-                            ),
-
-                          ]
-
-                      ),
+                      // Row(
+                      //     children: <Widget> [
+                      //       RaisedButton(
+                      //         child: Text("A"),
+                      //         onPressed: (){},
+                      //         shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
+                      //       ),
+                      //
+                      //     ]
+                      //
+                      // ),
+                      // SizedBox(height:10.0),
+                      //
+                      // Row(
+                      //     children: <Widget> [
+                      //       RaisedButton(
+                      //         child: Text("B"),
+                      //         onPressed: (){},
+                      //         shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
+                      //       ),
+                      //
+                      //     ]
+                      //
+                      // ),
+                      //
+                      // SizedBox(height:10.0),
+                      //
+                      // Row(
+                      //     children: <Widget> [
+                      //       RaisedButton(
+                      //         child: Text("C"),
+                      //         onPressed: (){},
+                      //         shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
+                      //       ),
+                      //
+                      //     ]
+                      //
+                      // ),
+                      // SizedBox(height:10.0),
+                      //
+                      // Row(
+                      //     children: <Widget> [
+                      //       RaisedButton(
+                      //         child: Text("D"),
+                      //         onPressed: (){},
+                      //         shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
+                      //       ),
+                      //
+                      //     ]
+                      //
+                      // ),
 
 
 
@@ -379,64 +411,84 @@ class bus_seats extends StatelessWidget {
                       SizedBox(height:30.0),
 
                       Row(
-                          children: <Widget> [
-                            RaisedButton(
-                              child: Text("A"),
-                              onPressed: (){},
-                              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
-                            ),
-
-                          ]
-
-                      ),
-                      SizedBox(height:10.0),
-
-                      Row(
-                          children: <Widget> [
-                            RaisedButton(
-                              child: Text("B"),
-                              onPressed: (){},
-                              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
-                            ),
-
-                          ]
-
+                        children: <Widget>[
+                          Checkbox(
+                            activeColor: Colors.blue,
+                            onChanged: (bool value) {
+                              setState(() => this._checkBoxVal = value);
+                            },
+                            value: this._checkBoxVal,
+                          ),
+                          Text(
+                            widget.to!=null? widget.to+" Bus Stand ":"",style: TextStyle(fontSize: 20,fontStyle: FontStyle.italic),
+                          ),
+                        ],
                       ),
 
-                      SizedBox(height:10.0),
-
-                      Row(
-                          children: <Widget> [
-                            RaisedButton(
-                              child: Text("C"),
-                              onPressed: (){},
-                              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
-                            ),
-
-                          ]
-
-                      ),
-                      SizedBox(height:10.0),
-
-                      Row(
-                          children: <Widget> [
-                            RaisedButton(
-                              child: Text("D"),
-                              onPressed: (){},
-                              shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
-                            ),
-
-                          ]
-
-                      ),
+                      // Row(
+                      //     children: <Widget> [
+                      //       RaisedButton(
+                      //         child: Text("A"),
+                      //         onPressed: (){},
+                      //         shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
+                      //       ),
+                      //
+                      //     ]
+                      //
+                      // ),
+                      // SizedBox(height:10.0),
+                      //
+                      //
+                      // Row(
+                      //     children: <Widget> [
+                      //       RaisedButton(
+                      //         child: Text("B"),
+                      //         onPressed: (){},
+                      //         shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
+                      //       ),
+                      //
+                      //     ]
+                      //
+                      // ),
+                      //
+                      // SizedBox(height:10.0),
+                      //
+                      // Row(
+                      //     children: <Widget> [
+                      //       RaisedButton(
+                      //         child: Text("C"),
+                      //         onPressed: (){},
+                      //         shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
+                      //       ),
+                      //
+                      //     ]
+                      //
+                      // ),
+                      // SizedBox(height:10.0),
+                      //
+                      // Row(
+                      //     children: <Widget> [
+                      //       RaisedButton(
+                      //         child: Text("D"),
+                      //         onPressed: (){},
+                      //         shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0) ,),
+                      //       ),
+                      //
+                      //     ]
+                      //
+                      // ),
                       Row(
                         children: <Widget> [
-                          SizedBox(height: 600.0),
+                          SizedBox(height: 800.0),
                           SizedBox(width: 320.0),
 
-                          IconButton(icon: Icon(Icons.arrow_forward), onPressed: ()
+                          IconButton(icon: Icon(Icons.arrow_forward,color: Colors.purple[900],), onPressed: ()
                           {
-                            Navigator.of(context).pushNamed(passenger.routeName);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => passenger(price: widget.price,)),
+                            );
+                            //Navigator.of(context).pushNamed(passenger.routeName);
                           }
                           ),
                         ],
@@ -469,3 +521,8 @@ class bus_seats extends StatelessWidget {
 
   }
 }
+
+void setState(bool Function() param0) {
+}
+
+

@@ -21,7 +21,7 @@ import 'package:track_n_go/screens/login_screen.dart';
 import 'package:track_n_go/screens/signup_screen.dart';
 import 'package:track_n_go/support/support_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:track_n_go/bus_list/bus_details/volvo.dart';
+import 'package:track_n_go/bus_list/bus_details/Bus_details.dart';
 import 'package:track_n_go/bus_list/bus_list.dart';
 
 void main() async{

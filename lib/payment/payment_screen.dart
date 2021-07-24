@@ -12,7 +12,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 // ignore: camel_case_types
 class payment extends StatefulWidget {
   static const routeName = '/payment';
-  const payment({Key key}) : super(key: key);
+  final String price;
+  const payment({Key key,this.price}) : super(key: key);
 
   @override
   _paymentState createState() => _paymentState();
@@ -21,6 +22,7 @@ class payment extends StatefulWidget {
 class _paymentState extends State<payment> {
   String PhoneNumber;
   String Email;
+  String Amount;
   bool dataarrived=false;
   static const platfrom = const MethodChannel("razorpzy_flutter");
 
@@ -51,7 +53,9 @@ class _paymentState extends State<payment> {
   void openCheckout() {
     var options = {
       "key":"rzp_test_Qs38n2LORuU2Eh",
-      "amount": num.parse(textEditingController.text)*100,
+      //"amount": num.parse(PhoneNumber)*100,
+      "amount": 25*100,
+      //"amount": num.parse(textEditingController.text)*100,
       "name" : "Track_n_Go",
       "description" : "Payment",
       "timeout" : 120,
@@ -105,26 +109,30 @@ class _paymentState extends State<payment> {
           },
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Column(
-          children: [
-            Lottie.asset('assets/wallet.json', height: 200,),
-            TextField(
-              controller: textEditingController,
-              decoration: InputDecoration(
-                hintText: "Enter the amount"
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            children: [
+              Lottie.asset('assets/wallet.json', height: 200,),
+              // TextField(
+              //   controller: textEditingController,
+              //   maxLength: 4,
+              //   decoration: InputDecoration(
+              //     hintText: "Enter the amount",
+              //   ),
+              // ),
+              //Text(PhoneNumber),
+              SizedBox(height: 12,),
+              RaisedButton(
+                color: Colors.purple[900],
+                child: Text('Pay now',style: TextStyle(color: Colors.yellow),),
+                onPressed: () {
+                  openCheckout();
+                },
               ),
-            ),
-            SizedBox(height: 12,),
-            RaisedButton(
-              color: Colors.purple[900],
-              child: Text('Pay now',style: TextStyle(color: Colors.yellow),),
-              onPressed: () {
-                openCheckout();
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -140,6 +148,7 @@ class _paymentState extends State<payment> {
     await docRef.get().then((querySnapshot){
       PhoneNumber  = querySnapshot.get('phone_number');
       Email = querySnapshot.get('email');
+      Amount = querySnapshot.get('price');
     } );
 
     setState(() {

@@ -256,6 +256,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 lastDate: DateTime(2050),
                               );
                               dateController.text=date.toString().substring(0,10);
+
                             }
                         ),
                         SizedBox(height: 20,),
@@ -271,7 +272,21 @@ class _SearchScreenState extends State<SearchScreen> {
                           color: Colors.purple[900],
                           textColor: Colors.yellowAccent,
                           onPressed: () {
-                            Navigator.of(context).pushNamed(Reservations.routeName);
+                            // MaterialApp(
+                            //   routes: {
+                            //     Reservations.routeName: (context) =>
+                            //     const Reservations(str1: city1,str2: city2),
+                            //   },
+                            // );
+                            print(city1);
+                            print(city2);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Reservations(str1: city1,str2: city2,date:  dateController.text,)),
+                            );
+                            //return MaterialPageRoute(builder: (_)=> Reservations(str1: city1,str2: city2));
+                            //Reservations(str1: city1,str2: city2);
+                            //Navigator.of(context).pushNamed(Reservations.routeName);
                           },
                         ),
                       ]
