@@ -9,18 +9,15 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:track_n_go/Passenger_Details/passenger_details.dart';
 
 
-
-// ignore: camel_case_types
-class payment extends StatefulWidget {
-  static const routeName = '/payment';
-  final String price;
-  const payment({Key key,this.price}) : super(key: key);
+class Wallet extends StatefulWidget {
+  static const routeName = '/wallet';
+  const Wallet({Key key}) : super(key: key);
 
   @override
-  _paymentState createState() => _paymentState();
+  _WalletState createState() => _WalletState();
 }
 
-class _paymentState extends State<payment> {
+class _WalletState extends State<Wallet> {
   String PhoneNumber;
   String Email;
   String Amount;
@@ -55,8 +52,8 @@ class _paymentState extends State<payment> {
     var options = {
       "key":"rzp_test_Qs38n2LORuU2Eh",
       //"amount": num.parse(PhoneNumber)*100,
-      "amount": int.parse(widget.price)*100,
-      //"amount": num.parse(textEditingController.text)*100,
+      //"amount": int.parse(widget.price)*100,
+      "amount": num.parse(textEditingController.text)*100,
       "name" : "Track_n_Go",
       "description" : "Payment",
       "timeout" : 120,
@@ -80,22 +77,22 @@ class _paymentState extends State<payment> {
   void handlerPaymentSucess(PaymentSuccessResponse response) {
 
     Fluttertoast.showToast(msg: "Payment Success:" +
-    response.paymentId,
-    timeInSecForIosWeb: 100);
+        response.paymentId,
+        timeInSecForIosWeb: 100);
     Navigator.pop(context, PaymentStatus.Success);
   }
 
   void handlerErrorFailure(PaymentFailureResponse response) {
 
     Fluttertoast.showToast(msg: "Payment Failure:" + response.code.toString() + "-"+
-    response.message,
-    timeInSecForIosWeb: 100);
+        response.message,
+        timeInSecForIosWeb: 100);
     Navigator.pop(context, PaymentStatus.Failed);
   }
 
   void handlerExternalWallet(ExternalWalletResponse response) {
-   Fluttertoast.showToast(msg: 'External_Wallet:' + response.walletName,
-   timeInSecForIosWeb: 100);
+    Fluttertoast.showToast(msg: 'External_Wallet:' + response.walletName,
+        timeInSecForIosWeb: 100);
   }
 
   @override
@@ -103,7 +100,7 @@ class _paymentState extends State<payment> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple[900],
-        title: Text('Pay Now',
+        title: Text('Add Money to Wallet',
           style: TextStyle(color: Colors.yellow),
         ),
         leading: IconButton(
@@ -120,13 +117,13 @@ class _paymentState extends State<payment> {
           child: Column(
             children: [
               Lottie.asset('assets/wallet.json', height: 200,),
-              // TextField(
-              //   controller: textEditingController,
-              //   maxLength: 4,
-              //   decoration: InputDecoration(
-              //     hintText: "Enter the amount",
-              //   ),
-              // ),
+              TextField(
+                controller: textEditingController,
+                maxLength: 4,
+                decoration: InputDecoration(
+                  hintText: "Enter the amount",
+                ),
+              ),
               //Text(PhoneNumber),
               SizedBox(height: 12,),
               RaisedButton(
@@ -161,3 +158,4 @@ class _paymentState extends State<payment> {
     });
   }
 }
+

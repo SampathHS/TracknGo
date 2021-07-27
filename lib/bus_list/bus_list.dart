@@ -511,6 +511,7 @@
 //   );
 // }
 
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:track_n_go/bus_list/bus_details/Bus_details.dart';
@@ -525,40 +526,50 @@ class Reservations extends StatefulWidget {
   final String str1;
   final String str2;
   final String date;
+
   //Reservations({this.str1,this.str2});
 
-  const Reservations({Key key, this.color,this.str1,this.str2,this.date}) : super(key: key);
+  const Reservations({Key key, this.color, this.str1, this.str2, this.date})
+      : super(key: key);
 
   @override
   _ReservationsState createState() => _ReservationsState();
 }
 
 class _ReservationsState extends State<Reservations> {
-  CollectionReference busDetails = FirebaseFirestore.instance.collection("bus_final");
+  CollectionReference busDetails =
+      FirebaseFirestore.instance.collection("bus_final");
   List<BusBean> busList = [];
-  Future<void> fetchDataFromCollectionsPatents( List dataList) async {
+
+  Future<void> fetchDataFromCollectionsPatents(List dataList) async {
     await busDetails.get().then((querySnapshot) {
       querySnapshot.docs.forEach((result) {
         Map<String, dynamic> eachPatent = result.data();
+        print(result.reference.id);
         BusBean bean = BusBean(
+          path:result.reference.id,
           busName: eachPatent["busname"],
           from: eachPatent["from"],
           to: eachPatent["to"],
           ftime: eachPatent["ftime"],
           ttime: eachPatent["ttime"],
           price: eachPatent["price"],
+          seatStatus:eachPatent["seatStatus"]==null? null: Map<String, bool>.from(eachPatent["seatStatus"]),
+
         );
         dataList.add(bean);
       });
-    });setState(() {
-
     });
+    setState(() {});
+
   }
+
   @override
   void initState() {
     fetchDataFromCollectionsPatents(busList);
     super.initState();
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -577,90 +588,87 @@ class _ReservationsState extends State<Reservations> {
       ),
       body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints viewportConstraints) {
-            return Column(
-              children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*0.89,
-                  child: ListView(
-                      children: <Widget>[
-                        SingleChildScrollView(
-                          child: Container(
-                            child: ListView.builder(
-                                physics: ScrollPhysics(),
-                                scrollDirection: Axis.vertical,
-                                shrinkWrap: true,
-                                itemCount: busList.length,
-                                itemBuilder: (BuildContext ctxt, int index) {
-                                  return Column(
-                                    children: [
-                                      widget.str1==busList[index].from && widget.str2==busList[index].to?
-                                      Column(
-                                        children: [
-                                          EachBus(
-                                            date: widget.date,
-                                            busbean:busList[index],
-                                          ),
-                                          SizedBox(height: 15,)
-                                        ],
-                                      ):
-                                          Container(
+        return Column(
+          children: <Widget>[
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.89,
+              child: ListView(children: <Widget>[
+                SingleChildScrollView(
+                  child: Container(
+                    child: ListView.builder(
+                        physics: ScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: busList.length,
+                        itemBuilder: (BuildContext ctxt, int index) {
+                          return Column(
+                            children: [
+                              widget.str1 == busList[index].from &&
+                                      widget.str2 == busList[index].to
+                                  ? Column(
+                                      children: [
+                                        EachBus(
+                                          date: widget.date,
+                                          busbean: busList[index],
+                                        ),
+                                        SizedBox(
+                                          height: 15,
+                                        )
+                                      ],
+                                    )
+                                  : Container(),
+                              //SizedBox(height: 10,),
+                            ],
+                          );
+                          //return EachBus(
 
-                                          ),
-                                      //SizedBox(height: 10,),
-                                    ],
-                                  );
-                                  //return EachBus(
-
-                                  //busbean:busList[index],
-                                  //);
-                                }
-                            ),
-                          ),
-                        ),
-                        // ignore: deprecated_member_use
-                        // FlatButton(
-                        //   padding: const EdgeInsets.all(15),
-                        //   child: _reservationsItem1(),
-                        //   onPressed:(){
-                        //     Navigator.of(context).pushNamed(srs.routeName);
-                        //   },
-                        // ),
-                        // ignore: deprecated_member_use
-                        // FlatButton(
-                        //   padding: const EdgeInsets.all(15),
-                        //   child: _reservationsItem2(),
-                        //   onPressed:(){
-                        //     Navigator.of(context).pushNamed(greenLine.routeName);
-                        //   },
-                        // ),
-                        // // ignore: deprecated_member_use
-                        // FlatButton(
-                        //   padding: const EdgeInsets.all(15),
-                        //   child: _reservationsItem3(),
-                        //   onPressed:(){
-                        //     Navigator.of(context).pushNamed(vrl.routeName);
-                        //   },
-                        // ),
-                        // // ignore: deprecated_member_use
-                        // FlatButton(
-                        //   padding: const EdgeInsets.all(15),
-                        //   child: _reservationsItem4(),
-                        //   onPressed:(){
-                        //     Navigator.of(context).pushNamed(volvo.routeName);
-                        //   },
-                        // ),
-                      ]
+                          //busbean:busList[index],
+                          //);
+                        }),
                   ),
-                )
-              ],
-            );
-
-          }
-      ),
+                ),
+                // ignore: deprecated_member_use
+                // FlatButton(
+                //   padding: const EdgeInsets.all(15),
+                //   child: _reservationsItem1(),
+                //   onPressed:(){
+                //     Navigator.of(context).pushNamed(srs.routeName);
+                //   },
+                // ),
+                // ignore: deprecated_member_use
+                // FlatButton(
+                //   padding: const EdgeInsets.all(15),
+                //   child: _reservationsItem2(),
+                //   onPressed:(){
+                //     Navigator.of(context).pushNamed(greenLine.routeName);
+                //   },
+                // ),
+                // // ignore: deprecated_member_use
+                // FlatButton(
+                //   padding: const EdgeInsets.all(15),
+                //   child: _reservationsItem3(),
+                //   onPressed:(){
+                //     Navigator.of(context).pushNamed(vrl.routeName);
+                //   },
+                // ),
+                // // ignore: deprecated_member_use
+                // FlatButton(
+                //   padding: const EdgeInsets.all(15),
+                //   child: _reservationsItem4(),
+                //   onPressed:(){
+                //     Navigator.of(context).pushNamed(volvo.routeName);
+                //   },
+                // ),
+              ]),
+            )
+          ],
+        );
+      }),
     );
   }
 }
+
 class EachBus extends StatelessWidget {
   // final String busName;
   // final String from;
@@ -670,7 +678,8 @@ class EachBus extends StatelessWidget {
   // final String price;
   final BusBean busbean;
   final String date;
-  EachBus({this.busbean,this.date});
+
+  EachBus({this.busbean, this.date});
 
   @override
   Widget build(BuildContext context) {
@@ -689,15 +698,24 @@ class EachBus extends StatelessWidget {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Icon(Icons.directions_bus_sharp, color: Colors.purple[900], size: 32),
+                Icon(Icons.directions_bus_sharp,
+                    color: Colors.purple[900], size: 32),
                 SizedBox(width: 15),
-                Text(busbean.busName,
-                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold,),),
-                SizedBox(width: 150),
-                Text('\u{20B9}', style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
                 Text(
-                    busbean.price,style: TextStyle(fontWeight:FontWeight.bold,fontSize: 19)
+                  busbean.busName,
+                  style: TextStyle(
+                    fontSize: 19,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
+                SizedBox(width: 150),
+                Text(
+                  '\u{20B9}',
+                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                ),
+                Text(busbean.price,
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 19)),
               ],
             ),
             //SizedBox(height: 10),
@@ -708,13 +726,22 @@ class EachBus extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(height: 15,),
-                      Text("Departure", style: TextStyle(color: Colors.black54)),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text("Departure",
+                          style: TextStyle(color: Colors.black54)),
                       SizedBox(height: 10),
                       Text(busbean.ftime,
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
                       SizedBox(height: 1),
-                      Text(busbean.from, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),),
+                      Text(
+                        busbean.from,
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
                       SizedBox(height: 20),
                       Row(
                         children: <Widget>[
@@ -722,40 +749,59 @@ class EachBus extends StatelessWidget {
                             Icons.star,
                             color: Colors.purple[900],
                           ),
-                          Text("4.1", style: TextStyle(color: Colors.black54),
+                          Text(
+                            "4.1",
+                            style: TextStyle(color: Colors.black54),
                           ),
                           //SizedBox(width: 10,),
-
                         ],
                       ),
                     ],
                   ),
-
                 ),
                 Container(
                   child: Column(
                     children: <Widget>[
                       Row(
                         children: <Widget>[
-                          Icon(Icons.directions_bus_sharp, color: Colors.blue, size: 21),
-                          Icon(Icons.fiber_manual_record, color: Colors.blue, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.blue, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.blue, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.blue, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.blue, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.blue, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.blue, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.blue, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.green, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.blue, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.green, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.green, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.green, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.green, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.green, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.green, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.green, size: 8),
-                          Icon(Icons.fiber_manual_record, color: Colors.green, size: 8),
+                          Icon(Icons.directions_bus_sharp,
+                              color: Colors.blue, size: 21),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.blue, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.blue, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.blue, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.blue, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.blue, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.blue, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.blue, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.blue, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.green, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.blue, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.green, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.green, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.green, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.green, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.green, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.green, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.green, size: 8),
+                          Icon(Icons.fiber_manual_record,
+                              color: Colors.green, size: 8),
                           Icon(Icons.location_on, color: Colors.blue, size: 21),
                         ],
                       ),
@@ -766,29 +812,43 @@ class EachBus extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(height: 9,),
+                      SizedBox(
+                        height: 9,
+                      ),
                       Text("Arrival", style: TextStyle(color: Colors.black54)),
                       SizedBox(height: 10),
                       Text(busbean.ttime,
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
                       SizedBox(height: 1),
-                      Text(busbean.to, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+                      Text(busbean.to,
+                          style: TextStyle(
+                              color: Colors.blue, fontWeight: FontWeight.bold)),
                       SizedBox(height: 2),
-                      FlatButton(onPressed: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => volvo(busname: busbean.busName,
-                            from: busbean.from,
-                          Price: busbean.price,
-                              to: busbean.to,
-                          ftime: busbean.ftime,
-                          ttime: busbean.ttime,
-                            date: date,
+                      FlatButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => volvo(
+                                        busname: busbean.busName,
+                                        from: busbean.from,
+                                        Price: busbean.price,
+                                        to: busbean.to,
+                                        ftime: busbean.ftime,
+                                        ttime: busbean.ttime,
+                                        date: date,
+                                    seatStatus: busbean.seatStatus,
+                                    path: busbean.path,
+                                      )),
+                            );
+                            //Navigator.of(context).pushNamed(volvo.routeName);
+                          },
+                          child: Text(
+                            "BookNow",
+                            style: TextStyle(color: Colors.purple[900]),
                           )
-                          ),
-                        );
-                        //Navigator.of(context).pushNamed(volvo.routeName);
-                      }, child: Text("BookNow",style: TextStyle(color: Colors.green),)
                       )
                     ],
                   ),
@@ -809,19 +869,19 @@ class BusBean {
   final String ftime;
   final String ttime;
   final String price;
+  final String path;
+  Map<String, bool> seatStatus;
 
   BusBean(
-      {
-        @required this.busName,
-        @required this.from,
-        @required this.to,
-        @required this.ftime,
-        @required this.ttime,
-        @required this.price,
-      }
-        );
+      {@required this.busName,
+        @required this.path,
+      @required this.from,
+      @required this.to,
+      @required this.ftime,
+      @required this.ttime,
+      @required this.price,
+      @required this.seatStatus});
 }
-
 
 //
 // Widget _reservationsItem2() {
@@ -1091,4 +1151,3 @@ class BusBean {
 //     ),
 //   );
 // }
-

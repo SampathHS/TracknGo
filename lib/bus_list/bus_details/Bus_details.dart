@@ -12,8 +12,10 @@ class volvo extends StatefulWidget {
   final String from;
   final String to;
   final String date;
+  final String path;
+  final Map<String,bool> seatStatus;
 
-  const volvo({Key key,this.busname,this.Price,this.ftime,this.ttime,this.from,this.to,this.date}) : super(key: key);
+  const volvo({Key key,this.busname,this.Price,this.ftime,this.ttime,this.from,this.to,this.date, this.seatStatus, this.path}) : super(key: key);
 
   @override
   _volvoState createState() => _volvoState();
@@ -161,11 +163,12 @@ class _volvoState extends State<volvo> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => bus_seats(from: widget.from,
+                              path: widget.path,
                               to: widget.to,
                               busname: widget.busname,date: widget.date,
-                              price: widget.Price,)),
+                              price: widget.Price,
+                              seatStatus: widget.seatStatus,)),
                             );
-                            Navigator.of(context).pushNamed(bus_seats.routeName);
                           },
                         ),
                       ),

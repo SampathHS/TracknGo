@@ -262,6 +262,8 @@ class _detailsState extends State<details> {
 
   }
 
+
+
 }
 
 

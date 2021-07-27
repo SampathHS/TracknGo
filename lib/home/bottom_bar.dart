@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:track_n_go/Passenger_Details/passenger_details.dart';
 import 'package:track_n_go/home/searchscreen.dart';
 import 'package:track_n_go/home/myTicket.dart';
 import 'package:track_n_go/home/notification.dart';
@@ -14,7 +15,7 @@ class _bottomBarState extends State<bottomBar> {
   int _currentIndex=0;
   final List<Widget> _children=[
     SearchScreen(),
-    myTicket(),
+    myTicket(BookingDetails(travelsname:"Volvo travers",boardingpoint: 'Davangare',droppingpoint: 'Tumkuru',bookingid: '3546354',passengerdetails: 'pass1-20-M,pass2-22-M',journeydate: '19/07/2021',seatnumber: '14',totalamount: '1200')),
     notification(),
   ];
 

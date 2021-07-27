@@ -4,6 +4,7 @@ import 'package:track_n_go/app_list/profile.dart';
 import 'package:track_n_go/bus_list/bus_list.dart';
 import 'package:track_n_go/feedback/feedback_screen.dart';
 import 'package:track_n_go/gift_card/gift_card.dart';
+import 'package:track_n_go/payment/Wallet.dart';
 import 'package:track_n_go/payment/payment_screen.dart';
 import 'package:dropdownfield/dropdownfield.dart';
 import 'package:track_n_go/screens/login_screen.dart';
@@ -115,7 +116,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 title: Text('Wallet', style: TextStyle(fontSize: 18.0),
                 ),
                 onTap: () {
-                  Navigator.of(context).pushNamed(payment.routeName);
+                  Navigator.of(context).pushNamed(Wallet.routeName);
                 },
               ),
               ListTile(

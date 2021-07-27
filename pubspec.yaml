@@ -94,6 +94,7 @@ flutter:
     - assets/images/greenline1.jpg
     - assets/images/srs.jpg
     - assets/images/vrl.png
+    - assets/img.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

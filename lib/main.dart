@@ -11,6 +11,7 @@ import 'package:track_n_go/gift_card/offer_screen/offer_details2.dart';
 import 'package:track_n_go/gift_card/offer_screen/offer_details3.dart';
 import 'package:track_n_go/gift_card/offer_screen/offer_details4.dart';
 import 'package:track_n_go/home/bottom_bar.dart';
+import 'package:track_n_go/payment/Wallet.dart';
 import 'package:track_n_go/screens/details_screen.dart';
 import 'package:track_n_go/screens/splash_screen.dart';
 import 'package:track_n_go/app_list/profile.dart';
@@ -35,7 +36,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Track n Go',
-
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -63,6 +63,7 @@ class MyApp extends StatelessWidget {
         srs.routeName: (ctx) => srs(),
         vrl.routeName: (ctx) => vrl(),
         volvo.routeName: (ctx) => volvo(),
+        Wallet.routeName: (ctx) => Wallet(),
       },
     );
   }
