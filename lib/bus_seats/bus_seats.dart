@@ -569,7 +569,7 @@ class _bus_seatsState extends State<bus_seats> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => passenger(
-                                        bookingStatusPath: widget.path,
+                                            bookingStatusPath: widget.path,
                                             price: widget.price.toString(),
                                             seatStatus: widget.seatStatus,
                                             passegerCount: widget.selectedCount,
@@ -580,8 +580,8 @@ class _bus_seatsState extends State<bus_seats> {
                                                 seatnumber: widget.updateString,
                                                 totalamount: (widget.price *
                                                         widget.selectedCount)
-                                                    .toString(),travelsname: widget.busname),
-
+                                                    .toString(),
+                                                travelsname: widget.busname),
                                           )),
                                 );
                               } else {

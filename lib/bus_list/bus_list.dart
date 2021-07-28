@@ -547,21 +547,21 @@ class _ReservationsState extends State<Reservations> {
         Map<String, dynamic> eachPatent = result.data();
         print(result.reference.id);
         BusBean bean = BusBean(
-          path:result.reference.id,
+          path: result.reference.id,
           busName: eachPatent["busname"],
           from: eachPatent["from"],
           to: eachPatent["to"],
           ftime: eachPatent["ftime"],
           ttime: eachPatent["ttime"],
           price: eachPatent["price"],
-          seatStatus:eachPatent["seatStatus"]==null? null: Map<String, bool>.from(eachPatent["seatStatus"]),
-
+          seatStatus: eachPatent["seatStatus"] == null
+              ? null
+              : Map<String, bool>.from(eachPatent["seatStatus"]),
         );
         dataList.add(bean);
       });
     });
     setState(() {});
-
   }
 
   @override
@@ -839,8 +839,8 @@ class EachBus extends StatelessWidget {
                                         ftime: busbean.ftime,
                                         ttime: busbean.ttime,
                                         date: date,
-                                    seatStatus: busbean.seatStatus,
-                                    path: busbean.path,
+                                        seatStatus: busbean.seatStatus,
+                                        path: busbean.path,
                                       )),
                             );
                             //Navigator.of(context).pushNamed(volvo.routeName);
@@ -848,8 +848,7 @@ class EachBus extends StatelessWidget {
                           child: Text(
                             "BookNow",
                             style: TextStyle(color: Colors.purple[900]),
-                          )
-                      )
+                          ))
                     ],
                   ),
                 ),
@@ -874,7 +873,7 @@ class BusBean {
 
   BusBean(
       {@required this.busName,
-        @required this.path,
+      @required this.path,
       @required this.from,
       @required this.to,
       @required this.ftime,

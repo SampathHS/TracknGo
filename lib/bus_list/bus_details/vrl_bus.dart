@@ -14,9 +14,11 @@ class _vrlState extends State<vrl> {
   Widget build(BuildContext context) {
     final String image = 'assets/images/vrl.png';
     return Scaffold(
-      appBar:AppBar(title:Text('VRL Travels',
-        style: TextStyle(color: Colors.yellowAccent),
-      ),
+      appBar: AppBar(
+        title: Text(
+          'VRL Travels',
+          style: TextStyle(color: Colors.yellowAccent),
+        ),
         backgroundColor: Colors.purple[900],
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -29,22 +31,23 @@ class _vrlState extends State<vrl> {
       body: Stack(
         children: <Widget>[
           Container(
-              foregroundDecoration: BoxDecoration(
-                  color: Colors.black26
-              ),
+              foregroundDecoration: BoxDecoration(color: Colors.black26),
               height: 400,
-              child: Image.asset(image,fit: BoxFit.cover)),
+              child: Image.asset(image, fit: BoxFit.cover)),
           SingleChildScrollView(
-            padding: const EdgeInsets.only(top: 16.0,bottom: 20.0),
+            padding: const EdgeInsets.only(top: 16.0, bottom: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const SizedBox(height: 250),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     "VRL Travels",
-                    style: TextStyle(color: Colors.red, fontSize: 28.0, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
                 Row(
@@ -66,7 +69,6 @@ class _vrlState extends State<vrl> {
                     Spacer(),
                   ],
                 ),
-
                 Container(
                   padding: const EdgeInsets.all(32.0),
                   color: Colors.white,
@@ -109,15 +111,18 @@ class _vrlState extends State<vrl> {
                           ),
                           Column(
                             children: <Widget>[
-                              Text("\u{20B9}400", style: TextStyle(
-                                  color: Colors.purple,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0
-                              ),),
-                              Text("/per person",style: TextStyle(
-                                  fontSize: 12.0,
-                                  color: Colors.grey
-                              ),)
+                              Text(
+                                "\u{20B9}400",
+                                style: TextStyle(
+                                    color: Colors.purple,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0),
+                              ),
+                              Text(
+                                "/per person",
+                                style: TextStyle(
+                                    fontSize: 12.0, color: Colors.grey),
+                              )
                             ],
                           )
                         ],
@@ -126,52 +131,64 @@ class _vrlState extends State<vrl> {
                       SizedBox(
                         width: double.infinity,
                         child: RaisedButton(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0)),
                           color: Colors.purple[900],
                           textColor: Colors.yellowAccent,
-                          child: Text("Book Now", style: TextStyle(
-                              fontWeight: FontWeight.normal
-                          ),),
+                          child: Text(
+                            "Book Now",
+                            style: TextStyle(fontWeight: FontWeight.normal),
+                          ),
                           padding: const EdgeInsets.symmetric(
                             vertical: 16.0,
                             horizontal: 32.0,
                           ),
                           onPressed: () {
-                            Navigator.of(context).pushNamed(bus_seats.routeName);
+                            Navigator.of(context)
+                                .pushNamed(bus_seats.routeName);
                           },
                         ),
                       ),
                       const SizedBox(height: 30.0),
-                      Text("Description".toUpperCase(), style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18.0
-                      ),),
-                      const SizedBox(height: 10.0),
-                      Text("Started in 1971,we are proud to state that 'VRL Travels' "
-                          "has made tremendous progress in its chosen field and currently "
-                          "commands a fleet of nearly 5000 vehicles operating on 24/7 basis.\n Visit: www.VRLtravels.com", textAlign: TextAlign.justify, style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 16.0
-                      ),),
-                      const SizedBox(height: 15.0),
-                      Text.rich(TextSpan(children: [
-                        WidgetSpan(
-                            child: Icon(Icons.directions_bus_sharp, size: 20.0, color: Colors.black,)
-                        ),
-                        TextSpan(
-                            text: ":City Bus Stand(4:10 PM)"
-                        )
-                      ]), style: TextStyle(color: Colors.black, fontSize: 14.0),
+                      Text(
+                        "Description".toUpperCase(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 18.0),
                       ),
                       const SizedBox(height: 10.0),
-                      Text.rich(TextSpan(children: [
-                        WidgetSpan(
-                            child: Icon(Icons.directions_bus_sharp, size: 20.0, color: Colors.black,)
-                        ),
-                        TextSpan(
-                            text: ":Ubdt College Bus Stop(4:20 PM)"
-                        )
-                      ]), style: TextStyle(color: Colors.black, fontSize: 14.0),
+                      Text(
+                        "Started in 1971,we are proud to state that 'VRL Travels' "
+                        "has made tremendous progress in its chosen field and currently "
+                        "commands a fleet of nearly 5000 vehicles operating on 24/7 basis.\n Visit: www.VRLtravels.com",
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w300, fontSize: 16.0),
+                      ),
+                      const SizedBox(height: 15.0),
+                      Text.rich(
+                        TextSpan(children: [
+                          WidgetSpan(
+                              child: Icon(
+                            Icons.directions_bus_sharp,
+                            size: 20.0,
+                            color: Colors.black,
+                          )),
+                          TextSpan(text: ":City Bus Stand(4:10 PM)")
+                        ]),
+                        style: TextStyle(color: Colors.black, fontSize: 14.0),
+                      ),
+                      const SizedBox(height: 10.0),
+                      Text.rich(
+                        TextSpan(children: [
+                          WidgetSpan(
+                              child: Icon(
+                            Icons.directions_bus_sharp,
+                            size: 20.0,
+                            color: Colors.black,
+                          )),
+                          TextSpan(text: ":Ubdt College Bus Stop(4:20 PM)")
+                        ]),
+                        style: TextStyle(color: Colors.black, fontSize: 14.0),
                       )
                     ],
                   ),

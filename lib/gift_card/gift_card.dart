@@ -18,7 +18,10 @@ class _giftState extends State<gift> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Gift Card',style: TextStyle(color: Colors.yellowAccent),),
+        title: Text(
+          'Gift Card',
+          style: TextStyle(color: Colors.yellowAccent),
+        ),
         backgroundColor: Colors.purple[900],
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -29,50 +32,66 @@ class _giftState extends State<gift> {
         ),
       ),
       body: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints viewportConstraints)
-              {
-                return Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 5,),
-                  width: double.infinity,
-                  color: Colors.white70,
-                  child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          Lottie.asset('assets/gift/gift_card.json', height: 200),
-                          FlatButton(
-                            child: Image.asset('assets/gift/gift1.png',height: 150,),
-                            onPressed: (){
-                              Navigator.of(context).pushNamed(offer_details.routeName);
-                            },
-                          ),
-                          SizedBox(height: 15.0,),
-                          FlatButton(
-                            child: Image.asset('assets/gift/gift3.png',height: 150,),
-                            onPressed: (){
-                              Navigator.of(context).pushNamed(offer2.routeName);
-                            },
-                          ),
-                          SizedBox(height: 15.0,),
-                          FlatButton(
-                            child: Image.asset('assets/gift/gift4.png',height: 150,),
-                            onPressed: (){
-                              Navigator.of(context).pushNamed(offer3.routeName);
-                            },
-                          ),
-                          FlatButton(
-                            child: Image.asset('assets/gift/gift2.png',height: 150,),
-                            onPressed: (){
-                              Navigator.of(context).pushNamed(offer4.routeName);
-                            },
-                          ),
-                        ],
-                      ),
+          builder: (BuildContext context, BoxConstraints viewportConstraints) {
+        return Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 5,
+          ),
+          width: double.infinity,
+          color: Colors.white70,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Lottie.asset('assets/gift/gift_card.json', height: 200),
+                FlatButton(
+                  child: Image.asset(
+                    'assets/gift/gift1.png',
+                    height: 150,
                   ),
-                );
-              }
-      ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(offer_details.routeName);
+                  },
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                FlatButton(
+                  child: Image.asset(
+                    'assets/gift/gift3.png',
+                    height: 150,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(offer2.routeName);
+                  },
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                FlatButton(
+                  child: Image.asset(
+                    'assets/gift/gift4.png',
+                    height: 150,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(offer3.routeName);
+                  },
+                ),
+                FlatButton(
+                  child: Image.asset(
+                    'assets/gift/gift2.png',
+                    height: 150,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(offer4.routeName);
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      }),
     );
   }
 }

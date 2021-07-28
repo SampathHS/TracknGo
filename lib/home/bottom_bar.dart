@@ -11,17 +11,24 @@ class bottomBar extends StatefulWidget {
 }
 
 class _bottomBarState extends State<bottomBar> {
-
-  int _currentIndex=0;
-  final List<Widget> _children=[
+  int _currentIndex = 0;
+  final List<Widget> _children = [
     SearchScreen(),
-    myTicket(BookingDetails(travelsname:"Volvo travers",boardingpoint: 'Davangare',droppingpoint: 'Tumkuru',bookingid: '3546354',passengerdetails: 'pass1-20-M,pass2-22-M',journeydate: '19/07/2021',seatnumber: '14',totalamount: '1200')),
+    myTicket(BookingDetails(
+        travelsname: "Volvo travers",
+        boardingpoint: 'Davangare',
+        droppingpoint: 'Tumkuru',
+        bookingid: '3546354',
+        passengerdetails: 'pass1-20-M,pass2-22-M',
+        journeydate: '19/07/2021',
+        seatnumber: '14',
+        totalamount: '1200')),
     notification(),
   ];
 
-  void onTappedBar(int index){
+  void onTappedBar(int index) {
     setState(() {
-      _currentIndex=index;
+      _currentIndex = index;
     });
   }
 
@@ -30,14 +37,12 @@ class _bottomBarState extends State<bottomBar> {
     return new Scaffold(
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        type:
-        BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.purple[900],
         selectedItemColor: Colors.yellowAccent,
         selectedFontSize: 15,
         unselectedFontSize: 12,
-        unselectedItemColor:
-        Colors.white.withOpacity(.60),
+        unselectedItemColor: Colors.white.withOpacity(.60),
         onTap: onTappedBar,
         currentIndex: _currentIndex,
         items: <BottomNavigationBarItem>[

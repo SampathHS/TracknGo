@@ -4,7 +4,6 @@ import 'package:track_n_go/home/bottom_bar.dart';
 import 'package:track_n_go/screens/details_screen.dart';
 import 'package:track_n_go/screens/components/auth.dart';
 
-
 class SignupScreen extends StatefulWidget {
   static const routeName = '/signup';
   @override
@@ -12,8 +11,8 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-String email;
-String password;
+  String email;
+  String password;
   bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
@@ -31,40 +30,49 @@ String password;
         ),
       ),
       body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints viewportConstraints)
-        {
+        builder: (BuildContext context, BoxConstraints viewportConstraints) {
           return Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [Colors.purple,Colors.deepPurple[900]],
-                )
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              colors: [Colors.purple, Colors.deepPurple[900]],
+            )),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30,
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 30,),
             width: double.infinity,
             child: SingleChildScrollView(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
                   minHeight: viewportConstraints.maxHeight,
                 ),
-
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      Image.asset('assets/logo.png', height: 200,),
-                      SizedBox(height: 20,),
-                      Text('Email',style: TextStyle(color: Colors.yellowAccent),),
-                      SizedBox(height: 5,),
+                      Image.asset(
+                        'assets/logo.png',
+                        height: 200,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Email',
+                        style: TextStyle(color: Colors.yellowAccent),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
 
                       TextField(
-                        onChanged: (v){
+                        onChanged: (v) {
                           setState(() {
-                            email=v;
+                            email = v;
                           });
                         },
-                        style: TextStyle(fontSize: 18,color: Colors.black54),
+                        style: TextStyle(fontSize: 18, color: Colors.black54),
                         decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -78,36 +86,40 @@ String password;
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                               borderRadius: BorderRadius.circular(5),
-                            )
-
-                        ),
+                            )),
                       ),
-                      SizedBox(height: 20,),
+                      SizedBox(
+                        height: 20,
+                      ),
 
-                      Text('Password',style: TextStyle(color: Colors.yellowAccent),),
-                      SizedBox(height: 5,),
+                      Text(
+                        'Password',
+                        style: TextStyle(color: Colors.yellowAccent),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
 
                       TextField(
-                        onChanged: (v){
+                        onChanged: (v) {
                           setState(() {
-                            password=v;
+                            password = v;
                           });
                         },
                         obscureText: _isObscure,
-                        style: TextStyle(fontSize: 18,color: Colors.black54),
+                        style: TextStyle(fontSize: 18, color: Colors.black54),
                         decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
                             hintText: 'Password',
                             prefixIcon: Icon(Icons.lock),
                             suffixIcon: IconButton(
-                              icon: Icon(
-                                _isObscure ?
-                                    Icons.visibility : Icons.visibility_off
-                              ),
+                              icon: Icon(_isObscure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
                               onPressed: () {
                                 setState(() {
-                                  _isObscure=!_isObscure;
+                                  _isObscure = !_isObscure;
                                 });
                               },
                             ),
@@ -119,39 +131,37 @@ String password;
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                               borderRadius: BorderRadius.circular(5),
-                            )
-
-                        ),
+                            )),
                       ),
 
-                      SizedBox(height: 30,),
-
+                      SizedBox(
+                        height: 30,
+                      ),
 
                       // ignore: deprecated_member_use
                       FlatButton(
-                        child: Text('SignUp',
+                        child: Text(
+                          'SignUp',
                           style: TextStyle(fontSize: 20),
-
                         ),
                         shape: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.transparent, width: 2),
+                          borderSide:
+                              BorderSide(color: Colors.transparent, width: 2),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         padding: const EdgeInsets.all(15),
                         color: Colors.yellowAccent,
                         textColor: Colors.black,
                         onPressed: () {
-                         MyAuth.signUp(email, password, context);
+                          MyAuth.signUp(email, password, context);
                         },
                       )
-                    ]
-                ),
+                    ]),
               ),
             ),
           );
         },
       ),
-
     );
   }
 }

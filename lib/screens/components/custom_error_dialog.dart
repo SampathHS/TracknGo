@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class CustomErrorDialog {
   static Future<dynamic> getErrorBox(var context, String msg) {
     return showDialog(
@@ -13,7 +12,6 @@ class CustomErrorDialog {
             ),
             title: Text(
               msg,
-
             ),
             content: Column(
               mainAxisSize: MainAxisSize.min,

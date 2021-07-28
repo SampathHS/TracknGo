@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
-
 class notification extends StatefulWidget {
   @override
   _notification createState() => _notification();
 }
-
 
 class _notification extends State<notification> {
   // Title List Here
@@ -35,7 +33,10 @@ class _notification extends State<notification> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Notification',style: TextStyle(color: Colors.yellowAccent),),
+        title: Text(
+          'Notification',
+          style: TextStyle(color: Colors.yellowAccent),
+        ),
         backgroundColor: Colors.purple[900],
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),

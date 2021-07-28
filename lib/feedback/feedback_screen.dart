@@ -12,7 +12,7 @@ class feedback extends StatefulWidget {
 }
 
 class _feedbackState extends State<feedback> {
-  final _navigatorKey=GlobalKey<NavigatorState>();
+  final _navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,9 @@ class _feedbackState extends State<feedback> {
       projectId: 'track_n_go-lq8ragu',
       navigatorKey: _navigatorKey,
       theme: WiredashThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.deepPurple[900],
-        secondaryColor: Colors.purple
-      ),
+          brightness: Brightness.light,
+          primaryColor: Colors.deepPurple[900],
+          secondaryColor: Colors.purple),
       child: MaterialApp(
         navigatorKey: _navigatorKey,
         home: fb(),
@@ -43,7 +42,7 @@ class fb extends StatefulWidget {
 
 class _fbState extends State<fb> {
   String Email;
-  bool dataarrived=false;
+  bool dataarrived = false;
 
   @override
   void initState() {
@@ -55,7 +54,10 @@ class _fbState extends State<fb> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Feedback',style: TextStyle(color: Colors.yellowAccent),),
+        title: Text(
+          'Feedback',
+          style: TextStyle(color: Colors.yellowAccent),
+        ),
         backgroundColor: Colors.purple[900],
       ),
       body: Container(
@@ -65,29 +67,36 @@ class _fbState extends State<fb> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Lottie.asset('assets/feedback1.json', height: 200,),
-              //SizedBox(height: 5,),
-              Text("Leave us a message, and we'll get in contact with you as soon as possible.",
-                style: TextStyle(fontSize: 20.0,color: Colors.black),
+              Lottie.asset(
+                'assets/feedback1.json',
+                height: 200,
               ),
-              SizedBox(height: 25,),
+              //SizedBox(height: 5,),
+              Text(
+                "Leave us a message, and we'll get in contact with you as soon as possible.",
+                style: TextStyle(fontSize: 20.0, color: Colors.black),
+              ),
+              SizedBox(
+                height: 25,
+              ),
               // ignore: deprecated_member_use
               FlatButton(
-                child: Text('Click Here',style: TextStyle(fontSize: 18),
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                padding: const EdgeInsets.all(15),
-                color: Colors.purple[900],
-                textColor: Colors.yellowAccent,
-                onPressed:() {
-                  Wiredash.of(context).setUserProperties(
-                    userEmail: Email,
-                  );
-                  Wiredash.of(context).show();
-                }
-              )
+                  child: Text(
+                    'Click Here',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  padding: const EdgeInsets.all(15),
+                  color: Colors.purple[900],
+                  textColor: Colors.yellowAccent,
+                  onPressed: () {
+                    Wiredash.of(context).setUserProperties(
+                      userEmail: Email,
+                    );
+                    Wiredash.of(context).show();
+                  })
             ],
           ),
         ),
@@ -96,21 +105,19 @@ class _fbState extends State<fb> {
   }
 
   Future<void> readData() async {
-
     FirebaseAuth auth = FirebaseAuth.instance;
     final String userID = auth.currentUser.uid;
     DocumentReference docRef = FirebaseFirestore.instance
         .collection('track_n_go')
         .doc('user_info')
-        .collection('user_details').doc(userID);
-    await docRef.get().then((querySnapshot){
+        .collection('user_details')
+        .doc(userID);
+    await docRef.get().then((querySnapshot) {
       Email = querySnapshot.get('email');
-    } );
+    });
 
     setState(() {
       dataarrived = true;
     });
   }
-
 }
-

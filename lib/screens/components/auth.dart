@@ -11,11 +11,9 @@ class MyAuth {
       await auth.createUserWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
-
       );
       Navigator.of(context).pushNamed(details.routeName);
-    }
-    catch (e) {
+    } catch (e) {
       switch (e.code) {
         case 'network-request-failed':
           CustomErrorDialog.getErrorBox(
@@ -42,8 +40,7 @@ class MyAuth {
           );
           break;
         default:
-          CustomErrorDialog.getErrorBox(context,
-              e.message + 'Error');
+          CustomErrorDialog.getErrorBox(context, e.message + 'Error');
           break;
       }
     }

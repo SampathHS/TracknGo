@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:track_n_go/widgets/model/slide.dart';
 
-
-
 class SlideItem extends StatelessWidget {
   final int index;
   SlideItem(this.index);
@@ -18,19 +16,27 @@ class SlideItem extends StatelessWidget {
           height: 200,
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
-            image: DecorationImage(image: AssetImage(slideList[index].imageUrl)),
+            image:
+                DecorationImage(image: AssetImage(slideList[index].imageUrl)),
             //fit: BoxFit.cover,
-
           ),
         ),
-        SizedBox(height: 40.0,),
-
-        Text(slideList[index].title,
-          style: TextStyle(fontSize: 28.0,color: Colors.white,fontWeight: FontWeight.bold,
+        SizedBox(
+          height: 40.0,
+        ),
+        Text(
+          slideList[index].title,
+          style: TextStyle(
+            fontSize: 28.0,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 10.0,),
-        Text( slideList[index].description,
+        SizedBox(
+          height: 10.0,
+        ),
+        Text(
+          slideList[index].description,
           textAlign: TextAlign.center,
         ),
       ],

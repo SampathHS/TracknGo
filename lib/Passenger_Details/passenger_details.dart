@@ -19,10 +19,12 @@ class passenger extends StatefulWidget {
 
   //const passenger({Key key,this.price,this.passegerCount}) : super(key: key);
 
-
-
-
-  passenger({this.price, passegerCount, this.bookingDetails, this.bookingStatusPath,this.seatStatus}) {
+  passenger(
+      {this.price,
+      passegerCount,
+      this.bookingDetails,
+      this.bookingStatusPath,
+      this.seatStatus}) {
     if (passegerCount == null) {
       passegerCount = 1;
     } else {
@@ -45,13 +47,14 @@ int _value1 = 0;
 class _passengerState extends State<passenger> {
   Future<void> updateSeat(String path, var value) async {
     store.DocumentReference colRef =
-    store.FirebaseFirestore.instance.collection('bus_final').doc(path);
+        store.FirebaseFirestore.instance.collection('bus_final').doc(path);
     colRef.update(
       {
         'seatStatus': value,
       },
     );
   }
+
   bool _checkBoxVal = true;
 
   @override
@@ -141,35 +144,45 @@ class _passengerState extends State<passenger> {
                             '-' +
                             widget.passengerFields[i].age.toString() +
                             '-' +
-                            (widget.passengerFields[i].value == 1 ? 'M' : 'F')+',';
+                            (widget.passengerFields[i].value == 1 ? 'M' : 'F') +
+                            ',';
                       }
                       widget.payStatus = await Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => payment(
-                                  price:widget.bookingDetails.totalamount,
+                                  price: widget.bookingDetails.totalamount,
                                 )),
                       );
                       if (widget.payStatus == PaymentStatus.Success) {
-                        widget.bookingDetails.bookingid=DateTime.now().millisecondsSinceEpoch.remainder(100000).toString();
+                        widget.bookingDetails.bookingid = DateTime.now()
+                            .millisecondsSinceEpoch
+                            .remainder(100000)
+                            .toString();
 
                         store.CollectionReference colRef = store
                             .FirebaseFirestore.instance
                             .collection('booking_details');
                         colRef.add({
-                          'boardingpoint':widget.bookingDetails.boardingpoint,
+                          'boardingpoint': widget.bookingDetails.boardingpoint,
                           'bookingid': widget.bookingDetails.bookingid,
                           'droppingpoint': widget.bookingDetails.droppingpoint,
                           'journeydate': widget.bookingDetails.journeydate,
-                          'passengerdetails': widget.bookingDetails.passengerdetails,
+                          'passengerdetails':
+                              widget.bookingDetails.passengerdetails,
                           'seatnumber': widget.bookingDetails.seatnumber,
                           'totalamount': widget.bookingDetails.totalamount,
                           'travelsname': widget.bookingDetails.travelsname,
                           'userId': "",
                         });
-                        await updateSeat(widget.bookingStatusPath,widget.seatStatus);
+                        await updateSeat(
+                            widget.bookingStatusPath, widget.seatStatus);
                         Navigator.pop(context);
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>myTicket(widget.bookingDetails)));
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    myTicket(widget.bookingDetails)));
                       }
                     },
                   ),
@@ -182,7 +195,9 @@ class _passengerState extends State<passenger> {
     );
   }
 }
+
 BookingDetails tempTicket;
+
 class BookingDetails {
   String boardingpoint;
   String bookingid;
@@ -241,8 +256,9 @@ class _PassengerDetailsState extends State<PassengerDetails> {
                 ),
                 TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black54),
-                  onChanged: (val){
-                    widget.name=val;                  },
+                  onChanged: (val) {
+                    widget.name = val;
+                  },
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,

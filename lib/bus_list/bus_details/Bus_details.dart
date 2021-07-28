@@ -13,17 +13,26 @@ class volvo extends StatefulWidget {
   final String to;
   final String date;
   final String path;
-  final Map<String,bool> seatStatus;
+  final Map<String, bool> seatStatus;
 
-  const volvo({Key key,this.busname,this.Price,this.ftime,this.ttime,this.from,this.to,this.date, this.seatStatus, this.path}) : super(key: key);
+  const volvo(
+      {Key key,
+      this.busname,
+      this.Price,
+      this.ftime,
+      this.ttime,
+      this.from,
+      this.to,
+      this.date,
+      this.seatStatus,
+      this.path})
+      : super(key: key);
 
   @override
   _volvoState createState() => _volvoState();
 }
 
 class _volvoState extends State<volvo> {
-
-
   //
   // bool dataarrived=false;
   // @override
@@ -36,9 +45,11 @@ class _volvoState extends State<volvo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(title:Text(widget.busname,
-        style: TextStyle(color: Colors.yellowAccent),
-      ),
+      appBar: AppBar(
+        title: Text(
+          widget.busname,
+          style: TextStyle(color: Colors.yellowAccent),
+        ),
         backgroundColor: Colors.purple[900],
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -51,22 +62,23 @@ class _volvoState extends State<volvo> {
       body: Stack(
         children: <Widget>[
           Container(
-              foregroundDecoration: BoxDecoration(
-                  color: Colors.black26
-              ),
+              foregroundDecoration: BoxDecoration(color: Colors.black26),
               height: 400,
-              child: Image.asset(image,fit: BoxFit.cover)),
+              child: Image.asset(image, fit: BoxFit.cover)),
           SingleChildScrollView(
-            padding: const EdgeInsets.only(top: 16.0,bottom: 20.0),
+            padding: const EdgeInsets.only(top: 16.0, bottom: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const SizedBox(height: 250),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     widget.busname,
-                    style: TextStyle(color: Colors.white, fontSize: 28.0, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
                 Row(
@@ -88,7 +100,6 @@ class _volvoState extends State<volvo> {
                     Spacer(),
                   ],
                 ),
-
                 Container(
                   padding: const EdgeInsets.all(32.0),
                   color: Colors.white,
@@ -132,15 +143,18 @@ class _volvoState extends State<volvo> {
                           Column(
                             children: <Widget>[
                               //Text('\u{20B9}', style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
-                              Text('\u{20B9} '+widget.Price, style: TextStyle(
-                                  color: Colors.purple,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0
-                              ),),
-                              Text("/per person",style: TextStyle(
-                                  fontSize: 12.0,
-                                  color: Colors.grey
-                              ),)
+                              Text(
+                                '\u{20B9} ' + widget.Price,
+                                style: TextStyle(
+                                    color: Colors.purple,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0),
+                              ),
+                              Text(
+                                "/per person",
+                                style: TextStyle(
+                                    fontSize: 12.0, color: Colors.grey),
+                              )
                             ],
                           )
                         ],
@@ -149,12 +163,14 @@ class _volvoState extends State<volvo> {
                       SizedBox(
                         width: double.infinity,
                         child: RaisedButton(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0)),
                           color: Colors.purple[900],
                           textColor: Colors.yellowAccent,
-                          child: Text("Book Now", style: TextStyle(
-                              fontWeight: FontWeight.normal
-                          ),),
+                          child: Text(
+                            "Book Now",
+                            style: TextStyle(fontWeight: FontWeight.normal),
+                          ),
                           padding: const EdgeInsets.symmetric(
                             vertical: 16.0,
                             horizontal: 32.0,
@@ -162,49 +178,72 @@ class _volvoState extends State<volvo> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => bus_seats(from: widget.from,
-                              path: widget.path,
-                              to: widget.to,
-                              busname: widget.busname,date: widget.date,
-                              price: widget.Price,
-                              seatStatus: widget.seatStatus,)),
+                              MaterialPageRoute(
+                                  builder: (context) => bus_seats(
+                                        from: widget.from,
+                                        path: widget.path,
+                                        to: widget.to,
+                                        busname: widget.busname,
+                                        date: widget.date,
+                                        price: widget.Price,
+                                        seatStatus: widget.seatStatus,
+                                      )),
                             );
                           },
                         ),
                       ),
                       const SizedBox(height: 30.0),
-                      Text("Description".toUpperCase(), style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18.0
-                      ),),
-                      const SizedBox(height: 10.0),
-                      Text("Started in 1971,we are proud to state that " +widget.busname+
-                          " has made tremendous progress in its chosen field and currently "
-                          "commands a fleet of nearly 5000 vehicles operating on 24/7 basis."
-                              "\n Visit: www."+widget.busname+".com", textAlign: TextAlign.justify, style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 16.0
+                      Text(
+                        "Description".toUpperCase(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 18.0),
                       ),
+                      const SizedBox(height: 10.0),
+                      Text(
+                        "Started in 1971,we are proud to state that " +
+                            widget.busname +
+                            " has made tremendous progress in its chosen field and currently "
+                                "commands a fleet of nearly 5000 vehicles operating on 24/7 basis."
+                                "\n Visit: www." +
+                            widget.busname +
+                            ".com",
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w300, fontSize: 16.0),
                       ),
                       const SizedBox(height: 15.0),
-                      Text.rich(TextSpan(children: [
-                        WidgetSpan(
-                            child: Icon(Icons.directions_bus_sharp, size: 20.0, color: Colors.black,)
-                        ),
-                        TextSpan(
-                            text: widget.from+" Bus Stand ("+widget.ftime+")"
-                        )
-                      ]), style: TextStyle(color: Colors.black, fontSize: 14.0),
+                      Text.rich(
+                        TextSpan(children: [
+                          WidgetSpan(
+                              child: Icon(
+                            Icons.directions_bus_sharp,
+                            size: 20.0,
+                            color: Colors.black,
+                          )),
+                          TextSpan(
+                              text: widget.from +
+                                  " Bus Stand (" +
+                                  widget.ftime +
+                                  ")")
+                        ]),
+                        style: TextStyle(color: Colors.black, fontSize: 14.0),
                       ),
                       const SizedBox(height: 10.0),
-                      Text.rich(TextSpan(children: [
-                        WidgetSpan(
-                            child: Icon(Icons.directions_bus_sharp, size: 20.0, color: Colors.black,)
-                        ),
-                        TextSpan(
-                            text: widget.to+" Bus Stand ("+widget.ttime+")"
-                        )
-                      ]), style: TextStyle(color: Colors.black, fontSize: 14.0),
+                      Text.rich(
+                        TextSpan(children: [
+                          WidgetSpan(
+                              child: Icon(
+                            Icons.directions_bus_sharp,
+                            size: 20.0,
+                            color: Colors.black,
+                          )),
+                          TextSpan(
+                              text: widget.to +
+                                  " Bus Stand (" +
+                                  widget.ttime +
+                                  ")")
+                        ]),
+                        style: TextStyle(color: Colors.black, fontSize: 14.0),
                       )
                     ],
                   ),
@@ -216,8 +255,4 @@ class _volvoState extends State<volvo> {
       ),
     );
   }
-
-
-
-
 }

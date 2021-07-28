@@ -7,44 +7,38 @@ import 'package:track_n_go/screens/signup_screen.dart';
 import 'package:track_n_go/widgets/slide_dots.dart';
 import 'package:track_n_go/widgets/slideitem.dart';
 
-
-
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
 class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3),
-            ()=>Navigator.pushReplacement(context,
-            MaterialPageRoute(builder:
-                (context) =>
-                SecondScreen(),
-            )
-        )
-    );
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SecondScreen(),
+            )));
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
         child: Container(
-          child: Image.asset('assets/logo.png'),
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-                colors: [Colors.purple,Colors.blue[900]],
-
-              )
-          ),
-        )
-    );
+      child: Image.asset('assets/logo.png'),
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        colors: [Colors.purple, Colors.blue[900]],
+      )),
+    ));
   }
 }
-
-
 
 class SecondScreen extends StatefulWidget {
   @override
@@ -52,10 +46,8 @@ class SecondScreen extends StatefulWidget {
 }
 
 class _SecondScreenState extends State<SecondScreen> {
-  int _currentPage=0;
-  final PageController _pageController= PageController(
-      initialPage: 0
-  );
+  int _currentPage = 0;
+  final PageController _pageController = PageController(initialPage: 0);
 
   @override
   void initState() {
@@ -93,14 +85,12 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              colors: [Colors.deepPurple[900],Colors.purple],
-
-            )
-        ),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            colors: [Colors.deepPurple[900], Colors.purple],
+          )),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -114,7 +104,7 @@ class _SecondScreenState extends State<SecondScreen> {
                         controller: _pageController,
                         onPageChanged: _onPageChanged,
                         itemCount: slideList.length,
-                        itemBuilder: (ctx,i)=> SlideItem(i),
+                        itemBuilder: (ctx, i) => SlideItem(i),
                       ),
                       Stack(
                         alignment: AlignmentDirectional.topStart,
@@ -125,8 +115,8 @@ class _SecondScreenState extends State<SecondScreen> {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                for(int i=0;i<slideList.length; i++)
-                                  if( i==_currentPage)
+                                for (int i = 0; i < slideList.length; i++)
+                                  if (i == _currentPage)
                                     SlideDots(true)
                                   else
                                     SlideDots(false)
@@ -136,16 +126,18 @@ class _SecondScreenState extends State<SecondScreen> {
                         ],
                       )
                     ],
-
                   ),
-
                 ),
-                SizedBox(height: 20.0,),
+                SizedBox(
+                  height: 20.0,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     FlatButton(
-                      child: Text('GET STARTED',style: TextStyle(fontSize: 18),
+                      child: Text(
+                        'GET STARTED',
+                        style: TextStyle(fontSize: 18),
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
@@ -160,11 +152,19 @@ class _SecondScreenState extends State<SecondScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text('have an account?',style: TextStyle(fontSize: 18.0,color: Colors.white),),
-                        FlatButton(child: Text('login',style: TextStyle(fontSize: 18.0,color: Colors.white),
+                        Text(
+                          'have an account?',
+                          style: TextStyle(fontSize: 18.0, color: Colors.white),
                         ),
+                        FlatButton(
+                          child: Text(
+                            'login',
+                            style:
+                                TextStyle(fontSize: 18.0, color: Colors.white),
+                          ),
                           onPressed: () {
-                            Navigator.of(context).pushNamed(LoginScreen.routeName);
+                            Navigator.of(context)
+                                .pushNamed(LoginScreen.routeName);
                           },
                         ),
                       ],
@@ -173,10 +173,7 @@ class _SecondScreenState extends State<SecondScreen> {
                 )
               ],
             ),
-
-          )
-      ),
+          )),
     );
-
   }
 }
